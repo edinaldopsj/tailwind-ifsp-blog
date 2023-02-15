@@ -1,13 +1,12 @@
 import NewsCard from "./components/NewsCard";
+import Title from "./components/Title";
 
 export default function App() {
   return (
     <div class="flex justify-center h-screen border-2 border-red-400">
       <div className="flex-col justify-center border-2 border-green-500 w-3/5">
         {/* Main page title */}
-        <h1 className="leading-loose text-4xl py-3 text-center">
-         IFSP - Dev News
-        </h1>
+        <Title title="IFSP - Dev New"/>
 
         {/* News area */}
         <section className="mt-4">
