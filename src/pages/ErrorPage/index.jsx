@@ -4,7 +4,7 @@ export default function ErrorPage() {
   const error = useRouteError();
 
   return (
-    <main class="flex flex-col text-center justify-center h-screen">
+    <main className="flex flex-col text-center justify-center h-screen">
       <header>
         <h1 className="text-3xl">Oops!</h1>
       </header>
