@@ -8,7 +8,7 @@ export default function NewsBody(props) {
 
     return (
         <div className="my-4 flex justify-center">
-            <div class="block shadow-lg bg-white text-justify w-full px-8 py-6">
+            <div className="block shadow-lg bg-white text-justify w-full px-8 py-6">
                 <article>
                     <Title title={title}/>
                     <section>
