@@ -10,8 +10,16 @@ export default function App() {
 
       {/* News area */}
       <section className="mt-4">
-        <NewsCard title="Noticia 01" subtitle="Venha conhecer a noticia 01" />
-        <NewsCard title="Noticia 02" subtitle="Venha conhecer a noticia 02" />
+        <NewsCard
+          id={1}
+          title="Noticia 01"
+          subtitle="Venha conhecer a noticia 01"
+        />
+        <NewsCard
+          id={2}
+          title="Noticia 02"
+          subtitle="Venha conhecer a noticia 02"
+        />
       </section>
     </Wrapper>
   );
