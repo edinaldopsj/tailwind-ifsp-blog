@@ -1,11 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { HandThumbUpIcon, HandThumbDownIcon } from "@heroicons/react/24/solid";
 
 import Title from "../Title";
+import Button from "../Button";
 
 export default function NewsBody(props) {
   const { id } = props;
+
+  const commentaryRef = useRef();
 
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -17,14 +20,22 @@ export default function NewsBody(props) {
 
   const [commentary, setCommentary] = useState("");
 
+  const handleLikeNews = () => {
+    console.log("Liking this news");
+  }
+
+  const handleDislikeNews = () => {
+    console.log("Disliking this news");
+  }
+
   const loadNews = useCallback(() => {
     setTitle("Noticia Teste 1");
     setSubtitle("Subtitle");
     setAuthor("Fulano de Tal");
     setDescription(
-      `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-      Deleniti facere libero ab! Rerum pariatur ad, dolores expedita sint 
-      ratione eligendi nostrum libero nulla, modi, porro aliquid aut saepe 
+      `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Deleniti facere libero ab! Rerum pariatur ad, dolores expedita sint
+      ratione eligendi nostrum libero nulla, modi, porro aliquid aut saepe
       voluptas enim!`
     );
     setNewsDate(new Date().toLocaleString("pt-BR"));
@@ -32,7 +43,10 @@ export default function NewsBody(props) {
     setDislikes(Math.floor(Math.random() * 100));
   }, []);
 
-  useEffect(() => loadNews(), []);
+  const handleCancelComment = () => {
+    setCommentary("");
+    commentaryRef.current.focus();
+  };
 
   const handleCommentForm = (e) => {
     e.preventDefault();
@@ -40,8 +54,10 @@ export default function NewsBody(props) {
     // TODO: add businness logic addComment here
   };
 
+  useEffect(() => loadNews(), []);
+
   return (
-    <article className="shadow-lg bg-white text-justify w-full px-80 py-6 h-full">
+    <article className="bg-white text-justify w-full px-80 py-6 h-full">
       {/* Title, subtitle, author and date */}
       <Title title={title} />
       <h5 className="text-2xl text-center">{subtitle}</h5>
@@ -51,9 +67,15 @@ export default function NewsBody(props) {
 
       {/* Like section */}
       <section className="flex justify-center my-2 gap-2">
-        <HandThumbUpIcon className="h-6 w-6 text-gray-500 hover:text-green-500 cursor-pointer" />
+        <HandThumbUpIcon
+          className="h-6 w-6 text-gray-500 hover:text-green-500 cursor-pointer"
+          onClick={handleLikeNews}
+        />
         <span>{likes}</span>
-        <HandThumbDownIcon className="h-6 w-6 text-gray-500 hover:text-red-500 cursor-pointer" />
+        <HandThumbDownIcon
+          className="h-6 w-6 text-gray-500 hover:text-red-500 cursor-pointer"
+          onClick={handleDislikeNews}
+        />
         <span>{dislikes}</span>
       </section>
 
@@ -70,16 +92,14 @@ export default function NewsBody(props) {
             id="commentary"
             className="border-2 border-gray-300 rounded-md w-full resize-none"
             onChange={(e) => setCommentary(e.target.value)}
+            value={commentary}
+            ref={commentaryRef}
             rows={5}
             required
           />
           <div className="flex flex-row justify-between">
-            <button type="button" className="px-4 border-2 hover:bg-gray-200">
-              Cancelar
-            </button>
-            <button type="submit" className="px-4 border-2 hover:bg-gray-200">
-              Enviar
-            </button>
+            <Button label="Limpar" onClick={handleCancelComment} />
+            <Button type="submit" />
           </div>
         </form>
 
