@@ -5,7 +5,7 @@ Os requisitos funcionais descrevem o comportamento do sistema e estão listados 
 O sistema deve exibir, na sua tela inicial, uma lista de notícias, exibindo seu título e seu subtítulo, bem como a data da sua publicação. Elas devem ser ordenadas da notícia mais atual para a mais antiga. Ao clicar no título de uma notícia, a mesma deve ser exibida (ver RF02). (Feito - frontend)
 
 2.2 RF02 - Visualização de notícia
-Ao exibir uma notícia, deve-se exibir seu título, subtítulo, data da publicação, nome do autor da notícia e o texto da notícia. Exibir também a quantidade de leitores que gostaram da notícia, a quantidade de leitores que não gostaram da notícia, e os comentários, se houverem.
+Ao exibir uma notícia, deve-se exibir seu título, subtítulo, data da publicação, nome do autor da notícia e o texto da notícia. Exibir também a quantidade de leitores que gostaram da notícia, a quantidade de leitores que não gostaram da notícia, e os comentários, se houverem. (Feito - frontend)
 
 2.3 RF03 - Cadastro de leitores
 Qualquer pessoa pode ser cadastrar como leitor de notícias do sistema, informando seu nome, e-mail (único), data de nascimento e uma senha forte. Após informar esses dados, o sistema deve enviar um e-mail para o e-mail cadastrado, informando ao usuário um código de ativação, que deve ser informado no sistema para completar seu cadastro. Leitores que não tiverem confirmado o código de ativação não podem usar as funcionalidades do sistema.
@@ -18,7 +18,7 @@ Todos os usuários (leitores e autores) podem alterar seu e-mail (desde que o no
 
 2.6 RF06 - Redefinição de senha
 Para que um usuário (leitor ou autor) possa alterar sua senha, é necessário que o mesmo faça essa solicitação através do sistema. Um e-mail deve ser enviado ao e-mail do usuário com um código, que deve ser utilizado para a criação da nova senha. A nova senha não deve ser igual à última senha. Utilizar boas práticas para criação e armazenamento de senhas.
- 
+
 2.7 RF07 - Primeira execução
 Na primeira execução do sistema, deve ser solicitado o nome, e-mail e a senha do usuário administrador. Este é o único usuário administrador que o sistema deve possuir. Para alterar os dados do administrador, veja o RF05. Para alterar a senha do administrador, veja o RF06.
 
@@ -39,7 +39,7 @@ O administrador do sistema pode bloquear o acesso de leitores, de acordo com seu
 
 2.13 RF13 - Manutenção de comentários
 O administrador do sistema pode excluir comentários a seu critério.
- 
+
 Requisitos Não Funcionais
 
 Os requisitos não funcionais descrevem qualidades e características do sistema. Todas os requi- sitos não funcionais descritos aqui são obrigatórios e devem ser cumpridos no desenvolvimento do sistema.
@@ -61,6 +61,6 @@ A API para controle de informações deve ser uma API RESTful, escrita em lingua
 
 3.6 RNF06 - Características de armazenamento
 O armazenamento do sistema deve possuir algumas características básicas, como acesso por múltiplos usuários, controle de concorrência, atomicidade das operações, recuperação dos da- dos e durabilidade dos dados (ou seja, mesmo se uma falha ocorrer no sistema, os dados devem
- 
+
 3 Requisitos Não Funcionais 5
  ser preservados e estar em perfeito estado para serem utilizados). Os dados devem ser aces- sados apenas após autenticação e autorização de usuário, sendo que informações sensíveis, se houverem, devem ser armazenadas de forma criptografada. Deve ser possível criar ou restaurar backup de maneira rápida e eficiente (utilização de, no máximo, dois comandos para executar essas tarefas).
