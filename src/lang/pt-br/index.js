@@ -14,5 +14,20 @@ export const LANG = {
       CONFIRM_BUTTON: 'Enviar',
       CANCEL_BUTTON: 'Cancelar'
     }
+  },
+  /* RF03 */
+  REGISTER_READER: {
+    TITLE: 'Cadastro de Leitores',
+
+    FORM: {
+      NAME: 'Nome',
+      EMAIL: 'Email',
+      BIRTHDAY: 'Data de nascimento',
+      PASSWORD: 'Senha',
+      CONFIRM_PASSWORD: 'Confirma Senha',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar'
+    }
   }
 }
