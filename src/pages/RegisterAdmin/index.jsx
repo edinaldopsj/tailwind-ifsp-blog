@@ -1,26 +1,27 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React from "react";
+import { useForm } from "react-hook-form";
+import Button from "../../components/Button";
 
-import Button from "../../components/Button"
-import ErrorLabel from "../../components/ErrorLabel"
-import Wrapper from "../../components/layout/Wrapper"
-import Title from "../../components/Title"
+import ErrorLabel from "../../components/ErrorLabel";
+import Wrapper from "../../components/layout/Wrapper";
+import Title from "../../components/Title";
 
-import { LANG } from "../../lang/pt-br"
-import { defaultValues, resolver } from "../RegisterAuthor/validation"
+import { LANG } from "../../lang/pt-br";
+import { defaultValues, resolver } from "../RegisterAuthor/validation";
 
-export default function RegisterReader() {
+export default function RegisterAdmin() {
   const {
-    register,
     reset,
     handleSubmit,
     formState: {errors},
-    setFocus
-  } = useForm({defaultValues, resolver})
+    setFocus,
+    register
+
+  } = useForm({defaultValues, resolver});
 
   const handleClearForm = () => {
     reset();
-    setFocus("name")
+    setFocus("name");
   }
 
   const onSubmit = (data) => {
@@ -29,15 +30,14 @@ export default function RegisterReader() {
 
   return (
     <Wrapper>
-      <Title title={LANG.REGISTER_READER.TITLE}/>
-
+      <Title title={LANG.REGISTER_ADMIN.TITLE}/>
       <main>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="px-48 flex flex-col gap-2"
         >
-            <label htmlFor="name">{LANG.REGISTER_READER.FORM.NAME}: *</label>
-            <input
+          <label htmlFor="name">{LANG.REGISTER_ADMIN.FORM.NAME}</label>
+          <input
               className={`border border-black w-full p-3 ${
                 errors?.name && `hover:border-red-500 enabled: border-red-500`
               }`}
@@ -48,8 +48,8 @@ export default function RegisterReader() {
             />
             {errors?.name ? <ErrorLabel message={errors.name.message} /> : null}
 
-            <label htmlFor="email">{LANG.REGISTER_AUTHOR.FORM.EMAIL}: *</label>
-            <input
+          <label htmlFor="email">{LANG.REGISTER_ADMIN.FORM.EMAIL}</label>
+          <input
               className={`border border-black w-full p-3 ${
                 errors?.email && `hover:border-red-500 enabled: border-red-500`
               }`}
@@ -102,15 +102,20 @@ export default function RegisterReader() {
                 label={LANG.REGISTER_READER.FORM.CANCEL_BUTTON}
                 onClick={handleClearForm}
               />
+
               <Button
                 type="submit"
                 label={LANG.REGISTER_READER.FORM.CONFIRM_BUTTON}
                 onClick={onSubmit}
               />
-
             </section>
-          </form>
+        </form>
       </main>
+
+
+
     </Wrapper>
+
   )
+
 }
