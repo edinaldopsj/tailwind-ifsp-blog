@@ -14,5 +14,20 @@ export const LANG = {
       CONFIRM_BUTTON: 'Enviar',
       CANCEL_BUTTON: 'Cancelar'
     }
+  },
+  /* RF05 */
+  CHANGE_EMAIL: {
+    TITLE: 'Alterar email de usuário',
+
+    FORM: {
+      OLD_EMAIL: 'Endereço de email atual',
+      NEW_EMAIL: 'Novo endereço de email',
+
+      CONFIRM_BUTTON: 'Alterar email',
+      CANCEL_BUTTON: 'Cancelar',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar'
+    }
   }
 }

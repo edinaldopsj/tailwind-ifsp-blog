@@ -1,16 +1,16 @@
 Requisitos Funcionais
 Os requisitos funcionais descrevem o comportamento do sistema e estão listados aqui em ordem aleatória. Todo o comportamento descrito aqui é obrigatório e deve ser realizado. Incrementos podem ser feitos, a critério do(s) discente(s), desde que não alterem o comportamento dos requisitos.
 
-2.1 RF01 - Tela inicial
-O sistema deve exibir, na sua tela inicial, uma lista de notícias, exibindo seu título e seu subtítulo, bem como a data da sua publicação. Elas devem ser ordenadas da notícia mais atual para a mais antiga. Ao clicar no título de uma notícia, a mesma deve ser exibida (ver RF02). (Feito - frontend)
+2.1 RF01 - Tela inicial - (Feito - frontend)
+O sistema deve exibir, na sua tela inicial, uma lista de notícias, exibindo seu título e seu subtítulo, bem como a data da sua publicação. Elas devem ser ordenadas da notícia mais atual para a mais antiga. Ao clicar no título de uma notícia, a mesma deve ser exibida (ver RF02).
 
-2.2 RF02 - Visualização de notícia
-Ao exibir uma notícia, deve-se exibir seu título, subtítulo, data da publicação, nome do autor da notícia e o texto da notícia. Exibir também a quantidade de leitores que gostaram da notícia, a quantidade de leitores que não gostaram da notícia, e os comentários, se houverem. (Feito - frontend)
+2.2 RF02 - Visualização de notícia - (Feito - frontend)
+Ao exibir uma notícia, deve-se exibir seu título, subtítulo, data da publicação, nome do autor da notícia e o texto da notícia. Exibir também a quantidade de leitores que gostaram da notícia, a quantidade de leitores que não gostaram da notícia, e os comentários, se houverem.
 
-2.3 RF03 - Cadastro de leitores
+2.3 RF03 - Cadastro de leitores - (Feito - frontend)
 Qualquer pessoa pode ser cadastrar como leitor de notícias do sistema, informando seu nome, e-mail (único), data de nascimento e uma senha forte. Após informar esses dados, o sistema deve enviar um e-mail para o e-mail cadastrado, informando ao usuário um código de ativação, que deve ser informado no sistema para completar seu cadastro. Leitores que não tiverem confirmado o código de ativação não podem usar as funcionalidades do sistema.
 
-2.4 RF04 - Manutenção de autores
+2.4 RF04 - Manutenção de autores - (Feito - frontend)
 O cadastro de autores é feito através do usuário administrador, que é cadastrado na primeira utilização do sistema (ver RF07). De cada autor armazena-se seu nome, e-mail, um apelido e a data de nascimento. No cadastro de um autor, a senha de entrada no sistema é enviada a ele em seu e-mail, devendo ser alterada após a primeira autenticação no sistema (ver RF06). O usuário administrador pode editar apenas o nome de um autor, ou então bloquear seu acesso ao sistema. Autores só podem ser excluídos do sistema caso eles não tenham nenhuma notícia publicada.
 
 2.5 RF05 - Manutenção de usuários
@@ -22,10 +22,10 @@ Para que um usuário (leitor ou autor) possa alterar sua senha, é necessário q
 2.7 RF07 - Primeira execução
 Na primeira execução do sistema, deve ser solicitado o nome, e-mail e a senha do usuário administrador. Este é o único usuário administrador que o sistema deve possuir. Para alterar os dados do administrador, veja o RF05. Para alterar a senha do administrador, veja o RF06.
 
-2.8 RF08 - Reação de leitores a uma notícia
+2.8 RF08 - Reação de leitores a uma notícia - (Feito - frontend)
 Um leitor pode reagir a uma notícia informando que gostou ou não gostou dela. Caso essa informação tenha sido armazenada, destacar quando esse leitor visualizar essa notícia. Apenas leitores com cadastro confirmado (e não bloqueado) no sistema podem realizar esta operação. É possível para o leitor remover essa informação, caso ela tenha sido informada.
 
-2.9 RF09 - Comentários de uma notícia
+2.9 RF09 - Comentários de uma notícia - (Feito - frontend)
 Um leitor pode comentar uma notícia, informando um texto a ser exibido no final da página da mesma, em ordem cronológica. O comentário não pode ser alterado pelo leitor. Apenas leitores com cadastro confirmado (e não bloqueado) no sistema podem realizar esta operação. Não é possível para o leitor remover um comentário realizado.
 
 2.10 RF10 - Manutenção de notícia
