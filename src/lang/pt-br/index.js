@@ -29,5 +29,20 @@ export const LANG = {
       CONFIRM_BUTTON: 'Enviar',
       CANCEL_BUTTON: 'Cancelar'
     }
+  },
+
+  /* RF07*/
+  REGISTER_ADMIN: {
+    TITLE: 'Cadastro de Administradores',
+
+    FORM: {
+      NAME: 'Nome',
+      EMAIL: 'Email',
+      PASSWORD: 'Senha',
+      CONFIRM_PASSWORD: 'Confirma Senha',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar'
+    }
   }
 }
