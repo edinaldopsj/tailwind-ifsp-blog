@@ -25,9 +25,25 @@ export const LANG = {
 
       CONFIRM_BUTTON: 'Alterar email',
       CANCEL_BUTTON: 'Cancelar',
+    }
+  },
+  /* RF06 */
+  CHANGE_PASSWORD: {
+    TITLE: 'Alterar senha de usuário',
 
-      CONFIRM_BUTTON: 'Enviar',
-      CANCEL_BUTTON: 'Cancelar'
+    FORM: {
+      OLD_PASSWORD: 'Digite sua senha atual',
+      CONFIRM_PASSWORD: 'Confirme sua senha atual',
+      NEW_PASSWORD: 'Digite sua nova senha',
+
+      CONFIRM_BUTTON: 'Alterar senha',
+      CANCEL_BUTTON: 'Cancelar',
+    },
+
+    VERIFICATION_FORM: {
+      CODE: 'Código de verificação',
+
+      CONFIRM_BUTTON: 'Enviar código'
     }
   }
 }
