@@ -1,4 +1,20 @@
 export const LANG = {
+  /* RF03 */
+  REGISTER_READER: {
+    TITLE: 'Cadastro de Leitores',
+
+    FORM: {
+      NAME: 'Nome',
+      EMAIL: 'Email',
+      BIRTHDAY: 'Data de nascimento',
+      PASSWORD: 'Senha',
+      CONFIRM_PASSWORD: 'Confirma Senha',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar'
+    }
+  },
+
   /* RF04 */
   REGISTER_AUTHOR: {
     TITLE: 'Cadastro de Autores',
@@ -15,6 +31,7 @@ export const LANG = {
       CANCEL_BUTTON: 'Cancelar'
     }
   },
+
   /* RF05 */
   CHANGE_EMAIL: {
     TITLE: 'Alterar email de usuário',
@@ -27,6 +44,7 @@ export const LANG = {
       CANCEL_BUTTON: 'Cancelar',
     }
   },
+
   /* RF06 */
   CHANGE_PASSWORD: {
     TITLE: 'Alterar senha de usuário',
@@ -44,6 +62,21 @@ export const LANG = {
       CODE: 'Código de verificação',
 
       CONFIRM_BUTTON: 'Enviar código'
+    }
+  },
+
+  /* RF07*/
+  REGISTER_ADMIN: {
+    TITLE: 'Cadastro de Administradores',
+
+    FORM: {
+      NAME: 'Nome',
+      EMAIL: 'Email',
+      PASSWORD: 'Senha',
+      CONFIRM_PASSWORD: 'Confirma Senha',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar'
     }
   }
 }
