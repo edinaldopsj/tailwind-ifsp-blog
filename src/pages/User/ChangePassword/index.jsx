@@ -1,11 +1,11 @@
 import React from "react";
 
-import Wrapper from "../../components/layout/Wrapper";
-import Title from "../../components/Title";
+import Wrapper from "../../../components/layout/Wrapper";
+import Title from "../../../components/Title";
 
-import { useToggle } from "../../hooks/useToggle";
+import { useToggle } from "../../../hooks/useToggle";
 
-import { LANG } from "../../lang/pt-br";
+import { LANG } from "../../../lang/pt-br";
 import { ChangePasswordForm } from "./ChangePasswordForm";
 import { VerificationForm } from "./VerificationForm";
 

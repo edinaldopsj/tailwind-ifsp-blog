@@ -1,4 +1,4 @@
-import yup from "../../config/yup";
+import yup from "../../../config/yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const validationSchema = yup.object({
