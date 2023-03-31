@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 
-import { LANG } from "../../lang/pt-br";
+import { LANG } from "../../../lang/pt-br";
 import { defaultValues, resolver } from "./validation";
 
 export function ChangePasswordForm(props) {

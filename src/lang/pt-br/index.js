@@ -33,14 +33,14 @@ export const LANG = {
   },
 
   /* RF05 */
-  CHANGE_EMAIL: {
-    TITLE: 'Alterar email de usuário',
+  EDIT_USER: {
+    TITLE: 'Alterar Dados de usuário',
 
     FORM: {
-      OLD_EMAIL: 'Endereço de email atual',
-      NEW_EMAIL: 'Novo endereço de email',
+      EMAIL: 'Endereço de email',
+      BIRTHDAY: 'Data de nascimento',
 
-      CONFIRM_BUTTON: 'Alterar email',
+      CONFIRM_BUTTON: 'Alterar dados',
       CANCEL_BUTTON: 'Cancelar',
     }
   },
