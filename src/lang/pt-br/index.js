@@ -1,4 +1,19 @@
+export const LOCALE = 'pt-BR';
 export const LANG = {
+  ERROR: {
+    BACK: 'Voltar para o início'
+  },
+
+  /* RF02 */
+  NEWS: {
+    COMMENTS: {
+      EDIT: 'Editar',
+      DELETE: 'Excluir',
+      CANCEL: 'Limpar'
+    },
+    BACK: 'Voltar para o início'
+  },
+
   /* RF03 */
   REGISTER_READER: {
     TITLE: 'Cadastro de Leitores',
