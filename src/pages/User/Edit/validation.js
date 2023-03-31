@@ -1,14 +1,14 @@
-import yup from "../../config/yup";
+import yup from "../../../config/yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 const validationSchema = yup.object({
-  oldEmail: yup.string().email().required(),
-  newEmail: yup.string().email().required(),
+  email: yup.string().email().required(),
+  birthday: yup.date().max(new Date()).required(),
 });
 
 const defaultValues = {
-  oldEmail: "",
-  newEmail: "",
+  email: "",
+  birthday: "",
 };
 
 const resolver = yupResolver(validationSchema);

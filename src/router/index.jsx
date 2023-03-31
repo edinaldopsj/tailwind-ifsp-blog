@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import ChangeEmail from "../pages/ChangeEmail";
-import ChangePassword from "../pages/ChangePassword";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
 import News from "../pages/News";
 import RegisterAdmin from "../pages/RegisterAdmin";
 import RegisterAuthor from "../pages/RegisterAuthor";
 import RegisterReader from "../pages/ResgisterReader";
+import ChangePassword from "../pages/User/ChangePassword";
+import Edit from "../pages/User/Edit";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +28,11 @@ const router = createBrowserRouter([
     element: <RegisterAuthor />
   },
   {
-    path: '/config/email',
-    element: <ChangeEmail />
+    path: '/user/edit',
+    element: <Edit />
   },
   {
-    path: '/config/password',
+    path: '/user/password',
     element: <ChangePassword />
   },
   {

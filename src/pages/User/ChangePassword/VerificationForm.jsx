@@ -1,13 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import Button from '../../components/Button';
+import Button from '../../../components/Button';
 
 import {
   verificationFormDefaultValues,
   verificationFormResolver
 } from './validationVerificationForm';
-import { LANG } from "../../lang/pt-br";
+import { LANG } from "../../../lang/pt-br";
 
 export function VerificationForm(props) {
   const { onValidate } = props;
