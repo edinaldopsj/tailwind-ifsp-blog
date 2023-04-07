@@ -34,9 +34,9 @@ export const NEWS_DATA_MOCK = {
       createdAt: '2022-01-01',
       content: 'Comment 2',
       by: 'User 2',
-    }
-  ]
-}
+    },
+  ],
+};
 
 /**
  * List of news data mock
@@ -63,8 +63,8 @@ export const NEWS_LIST_MOCK = [
         createdAt: '2022-01-01',
         content: 'Comment 2',
         by: 'User 2',
-      }
-    ]
+      },
+    ],
   },
   {
     id: 2,
@@ -87,7 +87,7 @@ export const NEWS_LIST_MOCK = [
         createdAt: '2022-01-03',
         content: 'Comment 2',
         by: 'User 4',
-      }
-    ]
-  }
-]
+      },
+    ],
+  },
+];

@@ -1,7 +1,7 @@
-import yup from "../../config/yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import yup from '../../config/yup';
 
-import { VALIDATION } from "../../lang/pt-br/validations";
+import { VALIDATION } from '../../lang/pt-br/validations';
 
 const validationSchema = yup.object({
   name: yup.string().required(),
@@ -11,19 +11,19 @@ const validationSchema = yup.object({
   password: yup.string().required(),
   confirmPassword: yup
     .string()
-    .oneOf([yup.ref("password"), null], VALIDATION.PASSWORD_MATCH_MESSAGE)
+    .oneOf([yup.ref('password'), null], VALIDATION.PASSWORD_MATCH_MESSAGE)
     .required(),
 });
 
 const defaultValues = {
-  name: "",
-  nickname: "",
-  email: "",
-  birthday: "",
-  password: "",
-  confirmPassword: "",
+  name: '',
+  nickname: '',
+  email: '',
+  birthday: '',
+  password: '',
+  confirmPassword: '',
 };
 
 const resolver = yupResolver(validationSchema);
 
-export { resolver, defaultValues }
+export { resolver, defaultValues };

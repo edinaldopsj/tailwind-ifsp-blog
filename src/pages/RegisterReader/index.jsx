@@ -2,19 +2,19 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import Button from '../../components/Button';
+import ErrorLabel from '../../components/ErrorLabel';
 import Wrapper from '../../components/layout/Wrapper';
 import Title from '../../components/Title';
-import ErrorLabel from '../../components/ErrorLabel';
 
-import { defaultValues, resolver } from './validation';
 import { LANG } from '../../lang/pt-br';
+import { defaultValues, resolver } from '../RegisterAuthor/validation';
 
-export default function RegisterAuthor() {
+export default function RegisterReader() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
-    reset,
     setFocus,
   } = useForm({ defaultValues, resolver });
 
@@ -25,12 +25,12 @@ export default function RegisterAuthor() {
 
   // eslint-disable-next-line no-unused-vars
   const onSubmit = (data) => {
-    // TODO: add businness logic here
+    // TODO: insert data in database
   };
 
   return (
     <Wrapper>
-      <Title title={LANG.REGISTER_AUTHOR.TITLE} />
+      <Title title={LANG.REGISTER_READER.TITLE} />
 
       <main>
         <form
@@ -38,14 +38,13 @@ export default function RegisterAuthor() {
           className="px-48 flex flex-col gap-2"
         >
           <label htmlFor="name">
-            {LANG.REGISTER_AUTHOR.FORM.NAME}
+            {LANG.REGISTER_READER.FORM.NAME}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
+              errors?.name && 'hover:border-red-500 enabled: border-red-500'
             }`}
-            id="name"
             name="name"
             type="text"
             placeholder="Digite seu nome"
@@ -53,34 +52,15 @@ export default function RegisterAuthor() {
           />
           {errors?.name ? <ErrorLabel message={errors.name.message} /> : null}
 
-          <label htmlFor="nickname">
-            {LANG.REGISTER_AUTHOR.FORM.NICKNAME}
-            : *
-          </label>
-          <input
-            className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
-            }`}
-            name="nickname"
-            id="nickname"
-            type="text"
-            placeholder="Apelido*"
-            {...register('nickname')}
-          />
-          {errors?.nickname ? (
-            <ErrorLabel message={errors.nickname.message} />
-          ) : null}
-
           <label htmlFor="email">
             {LANG.REGISTER_AUTHOR.FORM.EMAIL}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
+              errors?.email && 'hover:border-red-500 enabled: border-red-500'
             }`}
             name="email"
-            id="email"
             type="email"
             placeholder="E-Mail*"
             {...register('email')}
@@ -88,68 +68,62 @@ export default function RegisterAuthor() {
           {errors?.email ? <ErrorLabel message={errors.email.message} /> : null}
 
           <label htmlFor="birthday">
-            {LANG.REGISTER_AUTHOR.FORM.BIRTHDAY}
+            {LANG.REGISTER_READER.FORM.BIRTHDAY}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
+              errors?.birthday && 'hover:border-red-500 enabled: border-red-500'
             }`}
             name="birthday"
-            id="birthday"
             type="date"
+            placeholder="Data Nascimento*"
             {...register('birthday')}
           />
-          {errors?.birthday ? (
-            <ErrorLabel message={errors.birthday.message} />
-          ) : null}
+          {errors?.birthday ? <ErrorLabel message={errors.birthday.message} /> : null}
 
           <label htmlFor="password">
-            {LANG.REGISTER_AUTHOR.FORM.PASSWORD}
+            {LANG.REGISTER_READER.FORM.PASSWORD}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
+              errors?.birthday && 'hover:border-red-500 enabled: border-red-500'
             }`}
             name="password"
-            id="password"
             type="password"
-            placeholder="Senha forte*"
+            placeholder="Senha Forte*"
             {...register('password')}
           />
-          {errors?.password ? (
-            <ErrorLabel message={errors.password.message} />
-          ) : null}
+          {errors.password ? <ErrorLabel message={errors.password.message} /> : null}
 
-          <label htmlFor="confirmPassword">
-            {LANG.REGISTER_AUTHOR.FORM.CONFIRM_PASSWORD}
+          <label htmlFor="password">
+            {LANG.REGISTER_READER.FORM.CONFIRM_PASSWORD}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && 'hover:border-red-500 enabled:border-red-500'
+              errors?.confirmPassword && 'hover:border-red-500 enabled: border-red-500'
             }`}
             name="confirmPassword"
-            id="confirmPassword"
             type="password"
-            placeholder="Senha forte*"
+            placeholder="Senha Forte*"
             {...register('confirmPassword')}
           />
-          {errors?.confirmPassword ? (
-            <ErrorLabel message={errors.confirmPassword.message} />
-          ) : null}
+          {errors.confirmPassword ? <ErrorLabel message={errors.confirmPassword.message} /> : null}
 
           {/* Buttons */}
-          <section className="flex flex-row justify-between">
+          <section className="flex justify-row justify-between">
             <Button
-              label={LANG.REGISTER_AUTHOR.FORM.CANCEL_BUTTON}
+              label={LANG.REGISTER_READER.FORM.CANCEL_BUTTON}
               onClick={handleClearForm}
             />
             <Button
               type="submit"
-              label={LANG.REGISTER_AUTHOR.FORM.CONFIRM_BUTTON}
+              label={LANG.REGISTER_READER.FORM.CONFIRM_BUTTON}
+              onClick={onSubmit}
             />
+
           </section>
         </form>
       </main>

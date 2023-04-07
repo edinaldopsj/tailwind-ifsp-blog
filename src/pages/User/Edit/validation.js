@@ -1,5 +1,5 @@
-import yup from "../../../config/yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import yup from '../../../config/yup';
 
 const validationSchema = yup.object({
   email: yup.string().email().required(),
@@ -7,10 +7,10 @@ const validationSchema = yup.object({
 });
 
 const defaultValues = {
-  email: "",
-  birthday: "",
+  email: '',
+  birthday: '',
 };
 
 const resolver = yupResolver(validationSchema);
 
-export { resolver, defaultValues }
+export { resolver, defaultValues };

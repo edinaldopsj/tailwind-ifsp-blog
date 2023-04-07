@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import { HandThumbUpIcon, HandThumbDownIcon } from "@heroicons/react/24/solid";
+import React, { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/react/24/solid';
 
-import Title from "../Title";
-import Button from "../Button";
+import Title from '../Title';
+import Button from '../Button';
 
-import { LOCALE, LANG } from '../../lang/pt-br'
+import { LOCALE, LANG } from '../../lang/pt-br';
 
 /**
  * Render the news body of the page, getting the data from the props
@@ -26,25 +26,25 @@ import { LOCALE, LANG } from '../../lang/pt-br'
  * @returns
  */
 
-export default function NewsBody(props) {
-  const [commentary, setCommentary] = useState("");
+function NewsBody(props) {
+  const [commentary, setCommentary] = useState('');
   const { data } = props;
 
-  if (!data?.id) return (<div>Notícia Inválida</div>)
+  if (!data?.id) return (<div>Notícia Inválida</div>);
 
   const formattedDate = new Date(data?.updatedAt).toLocaleDateString(LOCALE);
   const commentaryRef = useRef();
 
   const handleLikeNews = () => {
-    console.log("Liking this news");
-  }
+    // TODO: handle the like button
+  };
 
   const handleDislikeNews = () => {
-    console.log("Disliking this news");
-  }
+    // TODO: handle the dislike button
+  };
 
   const handleCancelComment = () => {
-    setCommentary("");
+    setCommentary('');
     commentaryRef.current.focus();
   };
 
@@ -53,7 +53,6 @@ export default function NewsBody(props) {
 
     // TODO: add businness logic addComment here
   };
-
 
   return (
     <article className="bg-white text-justify w-full px-80 py-6 h-full">
@@ -86,29 +85,31 @@ export default function NewsBody(props) {
       {/* Comments section */}
       <section>
         <form onSubmit={handleCommentForm}>
-          <label htmlFor="commentary">Comentar</label>
-          <textarea
-            id="commentary"
-            className="border-2 border-gray-300 rounded-md w-full resize-none"
-            onChange={(e) => setCommentary(e.target.value)}
-            value={commentary}
-            ref={commentaryRef}
-            rows={5}
-            required
-          />
-          <div className="flex flex-row justify-between">
-            <Button label={LANG.NEWS.COMMENTS.CANCEL} onClick={handleCancelComment} />
-            <Button type="submit" />
-          </div>
+          <label htmlFor="commentary">
+            Comentar
+            <textarea
+              id="commentary"
+              className="border-2 border-gray-300 rounded-md w-full resize-none"
+              onChange={(e) => setCommentary(e.target.value)}
+              value={commentary}
+              ref={commentaryRef}
+              rows={5}
+              required
+            />
+            <div className="flex flex-row justify-between">
+              <Button label={LANG.NEWS.COMMENTS.CANCEL} onClick={handleCancelComment} />
+              <Button type="submit" />
+            </div>
+          </label>
         </form>
 
         {/* Comment list */}
         <section className="mt-8">
-          {data?.comments?.map(comment => {
+          {data?.comments?.map((comment) => (
             <section key={comment?.id} className="my-3">
               <header className="flex flex-row justify-between">
                 <h5 className="text-bold text-lg">{comment.by}</h5>
-                <h5>{new Date().toLocaleString("pt-BR")}</h5>
+                <h5>{new Date().toLocaleString('pt-BR')}</h5>
               </header>
 
               <p className="font-thin text-black">
@@ -120,7 +121,7 @@ export default function NewsBody(props) {
                 <button>{LANG.NEWS.COMMENTS.DELETE}</button>
               </footer>
             </section>
-          })}
+          ))}
         </section>
       </section>
 
@@ -133,3 +134,39 @@ export default function NewsBody(props) {
     </article>
   );
 }
+
+NewsBody.propTypes = {
+  data: {
+    id: 'number',
+    title: 'string',
+    subtitle: 'string',
+    author: 'string',
+    updatedAt: 'string',
+    content: 'string',
+    likes: 'number',
+    dislikes: 'number',
+    comments: [
+      {
+        id: 'number',
+        content: 'string',
+        by: 'string',
+      },
+    ],
+  },
+};
+
+NewsBody.defaultProps = {
+  data: {
+    id: 0,
+    title: '',
+    subtitle: '',
+    author: '',
+    updatedAt: '',
+    content: '',
+    likes: 0,
+    dislikes: 0,
+    comments: [],
+  },
+};
+
+export default NewsBody;

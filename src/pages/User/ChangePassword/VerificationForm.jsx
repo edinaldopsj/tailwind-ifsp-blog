@@ -1,15 +1,15 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import Button from '../../../components/Button';
 
 import {
   verificationFormDefaultValues,
-  verificationFormResolver
+  verificationFormResolver,
 } from './validationVerificationForm';
-import { LANG } from "../../../lang/pt-br";
+import { LANG } from '../../../lang/pt-br';
 
-export function VerificationForm(props) {
+function VerificationForm(props) {
   const { onValidate } = props;
 
   const {
@@ -20,15 +20,16 @@ export function VerificationForm(props) {
     setFocus,
   } = useForm({ verificationFormDefaultValues, verificationFormResolver });
 
+  // eslint-disable-next-line no-unused-vars
   const onSubmit = ({ data }) => {
-    console.log({ data }, "data");
+    // Should use the data to validate the password
   };
 
   const handleClearForm = () => {
     reset();
     setFocus('verificationCode');
     onValidate();
-  }
+  };
 
   return (
     <form
@@ -36,16 +37,17 @@ export function VerificationForm(props) {
       className="px-48 flex flex-col gap-2"
     >
       <label htmlFor="verificationCode">
-        {LANG.CHANGE_PASSWORD.VERIFICATION_FORM.CODE}: *
+        {LANG.CHANGE_PASSWORD.VERIFICATION_FORM.CODE}
+        : *
       </label>
       <input
-        className={`border border-black w-full p-3 ${errors?.verificationCode && `hover:border-red-500 enabled:border-red-500`
-          }`}
+        className={`border border-black w-full p-3 ${errors?.verificationCode && 'hover:border-red-500 enabled:border-red-500'
+        }`}
         id="verificationCode"
         name="verificationCode"
         type="text"
         placeholder="ex.: XyZ123FJFh"
-        {...register("verificationCode")}
+        {...register('verificationCode')}
       />
 
       {/* Buttons */}
@@ -60,5 +62,15 @@ export function VerificationForm(props) {
         />
       </section>
     </form>
-  )
+  );
 }
+
+VerificationForm.propTypes = {
+  onValidate: 'function',
+};
+
+VerificationForm.defaultProps = {
+  onValidate: () => {},
+};
+
+export default VerificationForm;

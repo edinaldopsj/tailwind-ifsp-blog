@@ -1,5 +1,5 @@
-import yup from "../../../config/yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+import yup from '../../../config/yup';
 
 const validationSchema = yup.object({
   oldPassword: yup.string().required(),
@@ -8,11 +8,11 @@ const validationSchema = yup.object({
 });
 
 const defaultValues = {
-  oldPassword: "",
-  confirmOldPassword: "",
-  newPassword: "",
+  oldPassword: '',
+  confirmOldPassword: '',
+  newPassword: '',
 };
 
 const resolver = yupResolver(validationSchema);
 
-export { resolver, defaultValues }
+export { resolver, defaultValues };
