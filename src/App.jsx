@@ -1,26 +1,18 @@
 import Wrapper from "./components/layout/Wrapper";
-import NewsCard from "./components/NewsCard";
 import Title from "./components/Title";
+import NewsList from "./pages/NewsList";
+import { NEWS_LIST_MOCK } from "./assets/mocks/news.mock";
 
 export default function App() {
+  // TODO: create function to get the news list from the API
+  // const getAllNews = () => {};
+
   return (
     <Wrapper>
       {/* Main page title */}
       <Title title="IFSP - Dev New" />
 
-      {/* News area */}
-      <section className="mt-4">
-        <NewsCard
-          id={1}
-          title="Noticia 01"
-          subtitle="Venha conhecer a noticia 01"
-        />
-        <NewsCard
-          id={2}
-          title="Noticia 02"
-          subtitle="Venha conhecer a noticia 02"
-        />
-      </section>
+      <NewsList news={NEWS_LIST_MOCK} />
     </Wrapper>
   );
 }
