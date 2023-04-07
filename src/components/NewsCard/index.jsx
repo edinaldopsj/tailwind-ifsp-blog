@@ -12,7 +12,7 @@ function NewsCard(props) {
   return (
     <Link to={`news/${id}`}>
       <section className="my-4 flex justify-center cursor-pointer">
-        <header className="block p-6 rounded-lg shadow-lg bg-white w-3/4">
+        <header className="block p-6 rounded-lg border-2 border-gray-300 bg-white w-3/4">
           <h6 className="text-gray-500 text-opacity-75 mb-1">{date}</h6>
           <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
             {title}

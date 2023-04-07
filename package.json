@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "echo \"No test for now\" && exit 0"
+    "test": "echo \"No test for now\" && exit 0",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.16",
