@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-export default function Button(props) {
-  const { label = "Enviar", type = "button", onClick } = props;
+function Button(props) {
+  const { label, type, onClick } = props;
 
   return (
     <button
@@ -13,3 +13,17 @@ export default function Button(props) {
     </button>
   );
 }
+
+Button.propTypes = {
+  label: 'string',
+  type: 'string',
+  onClick: 'function',
+};
+
+Button.defaultProps = {
+  label: 'Enviar',
+  type: 'button',
+  onClick: () => {},
+};
+
+export default Button;

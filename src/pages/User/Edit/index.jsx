@@ -1,13 +1,13 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-import Wrapper from "../../../components/layout/Wrapper";
-import Button from "../../../components/Button";
-import Title from "../../../components/Title";
+import Wrapper from '../../../components/layout/Wrapper';
+import Button from '../../../components/Button';
+import Title from '../../../components/Title';
 
-import { LANG } from "../../../lang/pt-br";
-import { defaultValues, resolver } from "./validation";
-import ErrorLabel from "../../../components/ErrorLabel";
+import { LANG } from '../../../lang/pt-br';
+import { defaultValues, resolver } from './validation';
+import ErrorLabel from '../../../components/ErrorLabel';
 
 export default function ChangeEmail() {
   const {
@@ -15,16 +15,16 @@ export default function ChangeEmail() {
     handleSubmit,
     formState: { errors },
     reset,
-    setFocus,
   } = useForm({ defaultValues, resolver });
 
+  // eslint-disable-next-line no-unused-vars
   const onSubmit = ({ data }) => {
-    console.log({ data }, "data");
+    // TODO: submit the data
   };
 
   const handleClearForm = () => {
     reset();
-  }
+  };
 
   return (
     <Wrapper>
@@ -36,30 +36,32 @@ export default function ChangeEmail() {
           className="px-48 flex flex-col gap-2"
         >
           <label htmlFor="email">
-            {LANG.EDIT_USER.FORM.EMAIL}: *
+            {LANG.EDIT_USER.FORM.EMAIL}
+            : *
           </label>
           <input
-            className={`border border-black w-full p-3 ${errors?.email && `hover:border-red-500 enabled:border-red-500`
-              }`}
+            className={`border border-black w-full p-3 ${errors?.email && 'hover:border-red-500 enabled:border-red-500'
+            }`}
             id="email"
             name="email"
             type="text"
             placeholder="ex.: email@email.com"
-            {...register("email")}
+            {...register('email')}
           />
           {errors?.email ? <ErrorLabel message={errors.email.message} /> : null}
 
           <label htmlFor="birthday">
-            {LANG.EDIT_USER.FORM.BIRTHDAY}: *
+            {LANG.EDIT_USER.FORM.BIRTHDAY}
+            : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.name && `hover:border-red-500 enabled:border-red-500`
+              errors?.name && 'hover:border-red-500 enabled:border-red-500'
             }`}
             name="birthday"
             id="birthday"
             type="date"
-            {...register("birthday")}
+            {...register('birthday')}
           />
           {errors?.birthday ? (
             <ErrorLabel message={errors.birthday.message} />

@@ -1,7 +1,7 @@
 export const LOCALE = 'pt-BR';
 export const LANG = {
   ERROR: {
-    BACK: 'Voltar para o início'
+    BACK: 'Voltar para o início',
   },
 
   /* RF02 */
@@ -9,9 +9,9 @@ export const LANG = {
     COMMENTS: {
       EDIT: 'Editar',
       DELETE: 'Excluir',
-      CANCEL: 'Limpar'
+      CANCEL: 'Limpar',
     },
-    BACK: 'Voltar para o início'
+    BACK: 'Voltar para o início',
   },
 
   /* RF03 */
@@ -26,8 +26,8 @@ export const LANG = {
       CONFIRM_PASSWORD: 'Confirma Senha',
 
       CONFIRM_BUTTON: 'Enviar',
-      CANCEL_BUTTON: 'Cancelar'
-    }
+      CANCEL_BUTTON: 'Cancelar',
+    },
   },
 
   /* RF04 */
@@ -43,8 +43,8 @@ export const LANG = {
       CONFIRM_PASSWORD: 'Confirmar senha',
 
       CONFIRM_BUTTON: 'Enviar',
-      CANCEL_BUTTON: 'Cancelar'
-    }
+      CANCEL_BUTTON: 'Cancelar',
+    },
   },
 
   /* RF05 */
@@ -57,7 +57,7 @@ export const LANG = {
 
       CONFIRM_BUTTON: 'Alterar dados',
       CANCEL_BUTTON: 'Cancelar',
-    }
+    },
   },
 
   /* RF06 */
@@ -76,11 +76,11 @@ export const LANG = {
     VERIFICATION_FORM: {
       CODE: 'Código de verificação',
 
-      CONFIRM_BUTTON: 'Enviar código'
-    }
+      CONFIRM_BUTTON: 'Enviar código',
+    },
   },
 
-  /* RF07*/
+  /* RF07 */
   REGISTER_ADMIN: {
     TITLE: 'Cadastro de Administradores',
 
@@ -91,7 +91,7 @@ export const LANG = {
       CONFIRM_PASSWORD: 'Confirma Senha',
 
       CONFIRM_BUTTON: 'Enviar',
-      CANCEL_BUTTON: 'Cancelar'
-    }
-  }
-}
+      CANCEL_BUTTON: 'Cancelar',
+    },
+  },
+};

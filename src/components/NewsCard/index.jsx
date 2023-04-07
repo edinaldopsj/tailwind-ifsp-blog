@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function NewsCard(props) {
+function NewsCard(props) {
   const {
     id,
     title,
     subtitle,
-    date = new Date().toLocaleString("pt-BR"),
+    date = new Date().toLocaleString('pt-BR'),
   } = props;
 
   return (
@@ -23,3 +23,19 @@ export default function NewsCard(props) {
     </Link>
   );
 }
+
+NewsCard.propTypes = {
+  id: 'number',
+  title: 'string',
+  subtitle: 'string',
+  date: 'string',
+};
+
+NewsCard.defaultProps = {
+  id: 0,
+  title: 'Title',
+  subtitle: 'Subtitle',
+  date: new Date().toLocaleString('pt-BR'),
+};
+
+export default NewsCard;

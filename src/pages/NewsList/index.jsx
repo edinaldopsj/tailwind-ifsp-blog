@@ -1,4 +1,5 @@
-import NewsCard from "../../components/NewsCard";
+import React from 'react';
+import NewsCard from '../../components/NewsCard';
 
 /**
  * Render the news list of the page, getting the data from the props
@@ -17,13 +18,13 @@ import NewsCard from "../../components/NewsCard";
  * @param {string} props.news.comments.content - the content the commentary
  * @param {string} props.news.comments.by - the name the commentary owner
  * @returns
- **/
-export default function NewsList(props) {
-  const {news} = props;
+ * */
+function NewsList(props) {
+  const { news } = props;
 
-  return(
+  return (
     <section className="mt-4">
-      {news.map(newsItem => (
+      {news.map((newsItem) => (
         <NewsCard
           key={newsItem?.id}
           id={newsItem?.id}
@@ -34,3 +35,13 @@ export default function NewsList(props) {
     </section>
   );
 }
+
+NewsList.propTypes = {
+  news: 'array',
+};
+
+NewsList.defaultProps = {
+  news: [],
+};
+
+export default NewsList;

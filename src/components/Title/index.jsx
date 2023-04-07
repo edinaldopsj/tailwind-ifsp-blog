@@ -1,4 +1,6 @@
-export default function Title(props) {
+import React from 'react';
+
+function Title(props) {
   const { title } = props;
   return (
     <header>
@@ -6,3 +8,13 @@ export default function Title(props) {
     </header>
   );
 }
+
+Title.propTypes = {
+  title: 'string',
+};
+
+Title.defaultProps = {
+  title: 'Title',
+};
+
+export default Title;

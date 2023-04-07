@@ -7,11 +7,11 @@ yup.setLocale({
   },
   mixed: {
     required: VALIDATION.GENERAL_REQUIRED,
-    notType: VALIDATION.VALID_TYPE
+    notType: VALIDATION.VALID_TYPE,
   },
   date: {
-    max: VALIDATION.MAX_DATE
-  }
+    max: VALIDATION.MAX_DATE,
+  },
 });
 
 export default yup;

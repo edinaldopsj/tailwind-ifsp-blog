@@ -1,48 +1,49 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import ErrorPage from "../pages/ErrorPage";
-import Login from "../pages/Login";
-import News from "../pages/News";
-import RegisterAdmin from "../pages/RegisterAdmin";
-import RegisterAuthor from "../pages/RegisterAuthor";
-import RegisterReader from "../pages/ResgisterReader";
-import ChangePassword from "../pages/User/ChangePassword";
-import Edit from "../pages/User/Edit";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import App from '../App';
+import ErrorPage from '../pages/ErrorPage';
+import Login from '../pages/Login';
+import RegisterAdmin from '../pages/RegisterAdmin';
+import RegisterAuthor from '../pages/RegisterAuthor';
+import ChangePassword from '../pages/User/ChangePassword';
+import Edit from '../pages/User/Edit';
+import RegisterReader from '../pages/RegisterReader';
+import NewsPage from '../pages/NewsPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
   },
   {
-    path: "/news/:newsId",
-    element: <News />,
+    path: '/news/:newsId',
+    element: <NewsPage />,
   },
   {
-    path: "/login",
-    element: <Login />
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '/authors/register',
-    element: <RegisterAuthor />
+    element: <RegisterAuthor />,
   },
   {
     path: '/user/edit',
-    element: <Edit />
+    element: <Edit />,
   },
   {
     path: '/user/password',
-    element: <ChangePassword />
+    element: <ChangePassword />,
   },
   {
-    path: "/readers/register",
-    element: <RegisterReader />
+    path: '/readers/register',
+    element: <RegisterReader />,
   },
   {
-    path: "/admin/register",
-    element: <RegisterAdmin />
-  }
+    path: '/admin/register',
+    element: <RegisterAdmin />,
+  },
 ]);
 
 export { router };
