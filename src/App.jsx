@@ -11,7 +11,7 @@ export default function App() {
   return (
     <Wrapper>
       {/* Main page title */}
-      <Title title="IFSP - Dev New" />
+      <Title title="IFSP - Dev News" />
 
       <NewsList news={NEWS_LIST_MOCK} />
     </Wrapper>

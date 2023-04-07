@@ -8,7 +8,7 @@ function Wrapper(props) {
 
   return (
     <div className={`flex justify-center h-screen ${borderClass}`}>
-      <div className={`flex-col justify-center w-3/5 ${childrenBorderClass}`}>
+      <div className={`flex-col justify-center w-full md:w-3/5 xl:4/5 ${childrenBorderClass}`}>
         {children}
       </div>
     </div>
