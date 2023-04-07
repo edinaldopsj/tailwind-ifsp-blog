@@ -2,9 +2,10 @@ import React from 'react';
 
 function Title(props) {
   const { title } = props;
+
   return (
     <header>
-      <h1 className="leading-loose text-4xl py-3 text-center">{title}</h1>
+      <h1 className="leading-loose text-4xl text-center py-3 uppercase">{title}</h1>
     </header>
   );
 }

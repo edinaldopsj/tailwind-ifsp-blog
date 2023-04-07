@@ -55,11 +55,11 @@ function NewsBody(props) {
   };
 
   return (
-    <article className="bg-white text-justify w-full px-80 py-6 h-full">
+    <article className="bg-white text-justify h-full w-full px-8 md:px-80 py-6">
       {/* Title, subtitle, author and date */}
       <Title title={data?.title} />
-      <h5 className="text-2xl text-center">{data?.subtitle}</h5>
-      <h5 className="text-gray-500 text-md text-center text-opacity-70 italic">
+      <h5 className="text-lg text-center uppercase leading-tight">{data?.subtitle}</h5>
+      <h5 className="text-gray-500 text-sm text-center text-opacity-70 italic uppercase">
         {`por ${data.author}, em ${formattedDate}`}
       </h5>
 
