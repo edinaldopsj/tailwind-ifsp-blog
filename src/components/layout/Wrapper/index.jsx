@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Wrapper(props) {
   const { children, showBorder, showChildrenBorder } = props;
@@ -8,7 +9,7 @@ function Wrapper(props) {
 
   return (
     <div className={`flex justify-center h-screen ${borderClass}`}>
-      <div className={`flex-col justify-center w-full md:w-3/5 xl:4/5 ${childrenBorderClass}`}>
+      <div className={`flex-col justify-center w-full lg:w-4/5 2xl:w-3/5  ${childrenBorderClass}`}>
         {children}
       </div>
     </div>
@@ -16,9 +17,9 @@ function Wrapper(props) {
 }
 
 Wrapper.propTypes = {
-  children: 'node',
-  showBorder: 'boolean',
-  showChildrenBorder: 'boolean',
+  children: PropTypes.node,
+  showBorder: PropTypes.bool,
+  showChildrenBorder: PropTypes.bool,
 };
 
 Wrapper.defaultProps = {

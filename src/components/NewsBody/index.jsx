@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/react/24/solid';
 
 import Title from '../Title';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 import { LOCALE, LANG } from '../../lang/pt-br';
 

@@ -9,6 +9,7 @@ import ChangePassword from '../pages/User/ChangePassword';
 import Edit from '../pages/User/Edit';
 import RegisterReader from '../pages/RegisterReader';
 import NewsPage from '../pages/NewsPage';
+import RegisterNews from '../pages/RegisterNews';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/news/:newsId',
     element: <NewsPage />,
+  },
+  {
+    path: '/news/list',
+    element: <RegisterNews />,
   },
   {
     path: '/login',
