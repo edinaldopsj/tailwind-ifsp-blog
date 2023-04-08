@@ -9,7 +9,7 @@ import ChangePassword from '../pages/User/ChangePassword';
 import Edit from '../pages/User/Edit';
 import RegisterReader from '../pages/RegisterReader';
 import NewsPage from '../pages/NewsPage';
-import List from '../pages/RegisterNews/List';
+import RegisterNews from '../pages/RegisterNews';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/news/list',
-    element: <List />,
+    element: <RegisterNews />,
   },
   {
     path: '/login',
