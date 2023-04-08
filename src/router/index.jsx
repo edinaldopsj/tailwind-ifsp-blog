@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <NewsPage />,
   },
   {
-    path: '/news/:newsId/list', // TODO: change route name
+    path: '/news/list',
     element: <List />,
   },
   {
