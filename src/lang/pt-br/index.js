@@ -94,4 +94,22 @@ export const LANG = {
       CANCEL_BUTTON: 'Cancelar',
     },
   },
+
+  /* RF10 */
+  REGISTER_NEWS: {
+    TITLE: 'Cadastro de Notícias',
+
+    NEWS_TABLE: {
+      NEWS_TITLE: 'Título',
+      NEWS_DATE: 'Última atualização',
+      NEWS_ACTIONS: 'Ações',
+    },
+
+    ACTIONS: {
+      EDIT: 'Editar',
+      PUBLISH: 'Publicar',
+      DELETE: 'Excluir',
+      NEW: 'Novo',
+    },
+  },
 };

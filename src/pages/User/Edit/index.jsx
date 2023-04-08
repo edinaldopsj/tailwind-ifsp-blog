@@ -2,12 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import Wrapper from '../../../components/layout/Wrapper';
-import Button from '../../../components/Button';
 import Title from '../../../components/Title';
 
 import { LANG } from '../../../lang/pt-br';
 import { defaultValues, resolver } from './validation';
 import ErrorLabel from '../../../components/ErrorLabel';
+import Button from '../../../components/Button/Button';
 
 export default function ChangeEmail() {
   const {

@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import Button from '../../../components/Button';
-
 import { LANG } from '../../../lang/pt-br';
 import { defaultValues, resolver } from './validation';
+import Button from '../../../components/Button/Button';
 
 function ChangePasswordForm(props) {
   const { onValidate } = props;
