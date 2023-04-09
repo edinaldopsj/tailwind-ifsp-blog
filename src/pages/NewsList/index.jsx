@@ -1,5 +1,6 @@
 import React from 'react';
 import NewsCard from '../../components/NewsCard';
+import Title from '../../components/Title';
 
 /**
  * Render the news list of the page, getting the data from the props
@@ -23,7 +24,8 @@ function NewsList(props) {
   const { news } = props;
 
   return (
-    <section className="mt-4">
+    <section className="min-h-screen border-x-2">
+      <Title title="IFSP - Dev News" />
       {news.map((newsItem) => (
         <NewsCard
           key={newsItem?.id}
