@@ -1,6 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Text from '../Typography/Text';
 
+/**
+ * Render the news card
+ * @param {object} props - the React Prop that contains data
+ * @param {number} props.id - the news unique identification
+ * @param {string} props.title - the title of this news
+ * @param {string} props.subtitle - the subtitle of this news
+ * @param {string} props.author - the author of this news
+ * @param {string} props.date - the date of this news
+ * @returns {JSX.Element}
+ */
 function NewsCard(props) {
   const {
     id,
@@ -12,13 +23,11 @@ function NewsCard(props) {
   return (
     <Link to={`news/${id}`}>
       <section className="my-4 flex justify-center cursor-pointer">
-        <header className="block p-6 rounded-lg border-2 border-gray-300 bg-white w-3/4">
-          <h6 className="text-gray-500 text-opacity-75 mb-1">{date}</h6>
-          <h5 className="text-gray-900 text-xl leading-tight font-medium mb-2">
-            {title}
-          </h5>
-          <p className="text-gray-700 text-base mb-3">{subtitle}</p>
-        </header>
+        <div className="flex flex-col gap-2 p-2 w-2/4  border-b-2 border-l-2">
+          <Text as="h2" size="text-sm">{date}</Text>
+          <Text as="h2" size="text-xl">{title}</Text>
+          <Text as="h4">{subtitle}</Text>
+        </div>
       </section>
     </Link>
   );

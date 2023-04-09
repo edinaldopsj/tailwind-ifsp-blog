@@ -1,10 +1,12 @@
 import React from 'react';
 import List from './List';
-import { NEWS_LIST_MOCK } from '../../assets/mocks/news.mock';
+import { getUserNews } from '../../providers/news/user';
 
 function RegisterNews() {
+  const userNews = getUserNews();
+
   return (
-    <List userNews={NEWS_LIST_MOCK} />
+    <List userNews={userNews} />
   );
 }
 
