@@ -112,4 +112,21 @@ export const LANG = {
       NEW: 'Novo',
     },
   },
+
+  USERS_LIST: {
+    TITLE: 'Cadastro de Usuários',
+
+    USERS_TABLE: {
+      USERS_NAME: 'Nome',
+      USERS_EMAIL: 'E-mail',
+      USERS_ROLE: 'Tipo',
+      USERS_ACTIONS: 'Ações',
+    },
+
+    ACTIONS: {
+      EDIT: 'Editar',
+      DELETE: 'Excluir',
+      NEW: 'Novo',
+    },
+  },
 };
