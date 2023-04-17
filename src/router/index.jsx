@@ -10,6 +10,7 @@ import Edit from '../pages/User/Edit';
 import RegisterReader from '../pages/RegisterReader';
 import NewsPage from '../pages/NewsPage';
 import RegisterNews from '../pages/RegisterNews';
+import UsersList from '../pages/User/List';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: '/admin/register',
     element: <RegisterAdmin />,
+  },
+  {
+    path: '/user/list',
+    element: <UsersList />,
   },
 ]);
 

@@ -70,13 +70,15 @@ export default function ChangeEmail() {
           {/* Buttons */}
           <section className="flex flex-row justify-between">
             <Button
-              label={LANG.EDIT_USER.FORM.CANCEL_BUTTON}
               onClick={handleClearForm}
-            />
+            >
+              {LANG.EDIT_USER.FORM.CANCEL_BUTTON}
+            </Button>
             <Button
               type="submit"
-              label={LANG.EDIT_USER.FORM.CONFIRM_BUTTON}
-            />
+            >
+              {LANG.EDIT_USER.FORM.CONFIRM_BUTTON}
+            </Button>
           </section>
         </form>
       </main>
