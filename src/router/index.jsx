@@ -1,5 +1,4 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import ErrorPage from '../pages/ErrorPage';
 import Login from '../pages/Login';
@@ -11,8 +10,11 @@ import RegisterReader from '../pages/RegisterReader';
 import NewsPage from '../pages/NewsPage';
 import RegisterNews from '../pages/RegisterNews';
 import UsersList from '../pages/User/List';
+import AuthorList from '../pages/AuthorList';
 
-const router = createBrowserRouter([
+const routerErrorElement = <ErrorPage />;
+
+const router = ([
   {
     path: '/',
     element: <App />,
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/authors/register',
+    path: '/authors/new',
     element: <RegisterAuthor />,
   },
   {
@@ -43,17 +45,21 @@ const router = createBrowserRouter([
     element: <ChangePassword />,
   },
   {
-    path: '/readers/register',
+    path: '/readers/new',
     element: <RegisterReader />,
   },
   {
-    path: '/admin/register',
+    path: '/admin/new',
     element: <RegisterAdmin />,
   },
   {
     path: '/user/list',
     element: <UsersList />,
   },
+  {
+    path: '/news/by/:authorName?',
+    element: <AuthorList />,
+  },
 ]);
 
-export { router };
+export { router, routerErrorElement };

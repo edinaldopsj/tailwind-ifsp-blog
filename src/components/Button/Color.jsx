@@ -16,19 +16,19 @@ function ColorButton({
   const colorClass = useMemo(() => {
     switch (color) {
       case 'blue':
-        return 'border-blue-200 bg-blue-200 text-gray-600 hover:bg-blue-200 hover:text-gray-400';
+        return 'border-blue-200 bg-blue-200 text-gray-600 hover:bg-blue-300';
       case 'red':
-        return 'border-red-200 bg-red-200 text-gray-600 hover:bg-red-200 hover:text-gray-400';
+        return 'border-red-200 bg-red-200 text-gray-600 hover:bg-red-300';
       case 'yellow':
-        return 'border-yellow-200 bg-yellow-200 text-gray-600 hover:bg-yellow-200 hover:text-gray-400';
+        return 'border-yellow-200 bg-yellow-200 text-gray-600 hover:bg-yellow-300';
       case 'green':
-        return 'border-green-200 bg-green-200 text-gray-600 hover:bg-green-200 hover:text-gray-400';
+        return 'border-green-200 bg-green-200 text-gray-600 hover:bg-green-300';
       default:
-        return 'border-gray-200 bg-gray-200 text-gray-600 hover:bg-gray-200 hover:text-gray-400';
+        return 'border-gray-200 bg-gray-200 text-gray-600 hover:bg-gray-300';
     }
   }, [color]);
 
-  const otherClasses = 'focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 text-sm leading-none text-gray-600 rounded focus:outline-none';
+  const otherClasses = 'focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 focus:outline-none text-gray-600 text-sm leading-none rounded ';
 
   return (
     <Button

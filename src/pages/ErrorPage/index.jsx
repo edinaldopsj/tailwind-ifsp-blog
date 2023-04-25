@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useRouteError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LANG } from '../../lang/pt-br';
 
 export default function ErrorPage() {
-  const error = useRouteError();
-
   return (
     <main className="flex flex-col text-center justify-center h-screen gap-4">
       <header>
@@ -13,7 +11,7 @@ export default function ErrorPage() {
       <section>
         <p className="text-2xl">Um erro inesperado aconteceu!</p>
         <p className="text-xl pt-3">
-          <i>{error.status ? '404 - Não encontrado' : null}</i>
+          <i>404 - Não encontrado</i>
         </p>
 
         <p className="mt-5">

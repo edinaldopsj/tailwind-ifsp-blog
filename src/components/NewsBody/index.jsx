@@ -27,13 +27,13 @@ import { LOCALE, LANG } from '../../lang/pt-br';
  */
 
 function NewsBody(props) {
+  const commentaryRef = useRef();
   const [commentary, setCommentary] = useState('');
   const { data } = props;
 
   if (!data?.id) return (<div>Notícia Inválida</div>);
 
   const formattedDate = new Date(data?.updatedAt).toLocaleDateString(LOCALE);
-  const commentaryRef = useRef();
 
   const handleLikeNews = () => {
     // TODO: handle the like button
@@ -55,7 +55,7 @@ function NewsBody(props) {
   };
 
   return (
-    <article className="bg-white text-justify h-full w-full px-8 md:px-80 py-6">
+    <article className="bg-white text-justify min-h-screen w-full py-6 px-8 md:px-60 xl:px-96">
       {/* Title, subtitle, author and date */}
       <Title title={data?.title} />
       <h5 className="text-lg text-center uppercase leading-tight">{data?.subtitle}</h5>
@@ -97,8 +97,12 @@ function NewsBody(props) {
               required
             />
             <div className="flex flex-row justify-between">
-              <Button label={LANG.NEWS.COMMENTS.CANCEL} onClick={handleCancelComment} />
-              <Button type="submit" />
+              <Button defaultButton small onClick={handleCancelComment}>
+                {LANG.NEWS.COMMENTS.CANCEL}
+              </Button>
+              <Button defaultButton small type="submit">
+                {LANG.NEWS.COMMENTS.SUBMIT}
+              </Button>
             </div>
           </label>
         </form>
@@ -106,7 +110,7 @@ function NewsBody(props) {
         {/* Comment list */}
         <section className="mt-8">
           {data?.comments?.map((comment) => (
-            <section key={comment?.id} className="my-3">
+            <section key={comment?.id} className="my-12">
               <header className="flex flex-row justify-between">
                 <h5 className="text-bold text-lg">{comment.by}</h5>
                 <h5>{new Date().toLocaleString('pt-BR')}</h5>
@@ -117,8 +121,8 @@ function NewsBody(props) {
               </p>
 
               <footer className="flex flex-row-reverse gap-2">
-                <button>{LANG.NEWS.COMMENTS.EDIT}</button>
-                <button>{LANG.NEWS.COMMENTS.DELETE}</button>
+                <Button defaultButton small>{LANG.NEWS.COMMENTS.EDIT}</Button>
+                <Button defaultButton small>{LANG.NEWS.COMMENTS.DELETE}</Button>
               </footer>
             </section>
           ))}

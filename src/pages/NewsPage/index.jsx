@@ -9,7 +9,7 @@ function NewsPage() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <NewsBody data={NEWS_DATA_MOCK} />
+      <NewsBody data={NEWS_DATA_MOCK} onComment onDeleteComment onEditComment />
     </Suspense>
   );
 }

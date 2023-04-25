@@ -26,13 +26,13 @@ export const NEWS_DATA_MOCK = {
     {
       id: 1,
       createdAt: '2022-01-01',
-      content: 'Comment 1',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, obcaecati a, atque ea consectetur qui necessitatibus libero optio quasi, dicta illo pariatur excepturi dolores eveniet non enim molestias nobis cumque.',
       by: 'User 1',
     },
     {
       id: 2,
       createdAt: '2022-01-01',
-      content: 'Comment 2',
+      content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, obcaecati a, atque ea consectetur qui necessitatibus libero optio quasi, dicta illo pariatur excepturi dolores eveniet non enim molestias nobis cumque.',
       by: 'User 2',
     },
   ],

@@ -10,6 +10,7 @@ export const LANG = {
       EDIT: 'Editar',
       DELETE: 'Excluir',
       CANCEL: 'Limpar',
+      SUBMIT: 'Enviar',
     },
     BACK: 'Voltar para o início',
   },
@@ -111,6 +112,11 @@ export const LANG = {
       DELETE: 'Excluir',
       NEW: 'Novo',
     },
+  },
+
+  /** RF - 11 */
+  BY_AUTHOR: {
+    TITLE: 'Visualizar notícias por Autor',
   },
 
   USERS_LIST: {

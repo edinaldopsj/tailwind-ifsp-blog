@@ -10,7 +10,6 @@ import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
  * @param {string} userNews.id The news id
  * @param {string} userNews.updatedAt The news updatedAt
  * @param {string} userNews.title The news title
- * @param {string} userNews.content The news content
  * @returns {Promise}
  * @example
  * getNews().then((userNews) => {
@@ -24,11 +23,18 @@ export function getUserNews() {
 
 /**
  * Get single news item for the admin or the author
- * @param {Headers} userId - the user id from the token object
- * @param {Headers} role - the user role from the token object
- * @param {string} userNews.id The news id
- * @returns {Promise}
- * @example
+  * @param {Headers} userId - the user id from the token object
+  * @param {Headers} role - the user role from the token object
+  * @param {string} userNews.id The news id
+  * @param {string} userNews.title The news title
+  * @param {string} userNews.subtitle The news subtitle
+  * @param {string} userNews.content The news content
+  * @param {string} userNews.comments The news comments
+  * @param {string} userNews.reactions The news reactions
+  * @param {string} userNews.reactions.likes The news reactions as likes
+  * @param {string} userNews.reactions.dislikes The news reactions as dislikes
+  * @returns {Promise}
+  * @example
  * getUserNewsItem().then(({userNewsId}) => {
  * console.log(userNews);
  * });
@@ -45,6 +51,7 @@ export function getUserNewsItem({ userNewsId }) {
   * @param {string} userNews.id The news id
   * @param {string} userNews.updatedAt The news updatedAt
   * @param {string} userNews.title The news title
+  * @param {string} userNews.subtitle The news subtitle
   * @param {string} userNews.content The news content
   * @returns {Promise}
   * @example
@@ -61,8 +68,9 @@ export function createUserNews({ userNews }) {
   * @param {Headers} role - the user role from the token object
   * @param {object} userNews The news object
   * @param {string} userNews.id The news id
-  * @param {string} userNews.updatedAt The news updatedAt
   * @param {string} userNews.title The news title
+  * @param {string} userNews.subtitle The news subtitle
+  * @param {string} userNews.updatedAt The news updatedAt
   * @param {string} userNews.content The news content
   * @returns {Promise}
   * @example

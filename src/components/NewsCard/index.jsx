@@ -22,11 +22,11 @@ function NewsCard(props) {
 
   return (
     <Link to={`news/${id}`}>
-      <section className="my-4 flex justify-center cursor-pointer">
-        <div className="flex flex-col gap-2 p-2 w-2/4  border-b-2 border-l-2">
+      <section className="my-2 flex justify-center cursor-pointer">
+        <div className="flex flex-col gap-2 p-2 w-3/4  border-b-2">
           <Text as="h2" size="text-sm">{date}</Text>
           <Text as="h2" size="text-xl">{title}</Text>
-          <Text as="h4">{subtitle}</Text>
+          <Text as="h4" className="my-2">{subtitle}</Text>
         </div>
       </section>
     </Link>
