@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Text from '../Typography/Text';
 
 /**
@@ -34,10 +35,10 @@ function NewsCard(props) {
 }
 
 NewsCard.propTypes = {
-  id: 'number',
-  title: 'string',
-  subtitle: 'string',
-  date: 'string',
+  id: PropTypes.number,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  date: PropTypes.string,
 };
 
 NewsCard.defaultProps = {

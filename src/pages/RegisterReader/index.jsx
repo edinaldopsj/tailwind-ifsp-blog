@@ -115,15 +115,16 @@ export default function RegisterReader() {
           {/* Buttons */}
           <section className="flex justify-row justify-between">
             <Button
-              label={LANG.REGISTER_READER.FORM.CANCEL_BUTTON}
               onClick={handleClearForm}
-            />
+            >
+              {LANG.REGISTER_READER.FORM.CANCEL_BUTTON}
+            </Button>
             <Button
               type="submit"
-              label={LANG.REGISTER_READER.FORM.CONFIRM_BUTTON}
               onClick={onSubmit}
-            />
-
+            >
+              {LANG.REGISTER_READER.FORM.CONFIRM_BUTTON}
+            </Button>
           </section>
         </form>
       </main>

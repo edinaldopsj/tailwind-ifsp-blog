@@ -15,7 +15,7 @@ function Navbar() {
     <main>
       <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02">
         <h1 className="w-3/12">
-          <Link href="/" className="flex gap-1 items-baseline p-4 text-xl font-semibold border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active">
+          <Link to="/" className="flex gap-1 items-baseline p-4 text-xl font-semibold border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active">
             <CodeTitle title="IFSP - Notícias" />
           </Link>
         </h1>
@@ -28,7 +28,7 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active" to="/by">ver Por Apelido</Link>
+              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active" to="/news/by">ver Por Apelido</Link>
             </li>
 
             {isLoggedIn

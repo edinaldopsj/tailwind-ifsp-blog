@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 // TODO: remove lint rule
+import axios from 'axios';
 import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
+import { API } from '../../../config/api';
 
 /**
  * Get news list for the site
@@ -15,13 +17,20 @@ import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
  *  console.log(news);
  * });
  * */
-export function getNews() {
-  // TODO: promise that returns data from database service - GET
-  return NEWS_LIST_MOCK;
+export async function getNews() {
+  try {
+    const { data } = await axios.get(`${API}/news`);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return [];
 }
 
 /**
- * Get news list for the site by author nickname
+ * Get news list for the site by authors and its number of news
  * @param {object[]} news The array of news list
  * @param {string} news.id The news id
  * @param {string} news.updatedAt The news updatedAt
@@ -33,9 +42,37 @@ export function getNews() {
  *  console.log(news);
  * });
  * */
-export function getNewsByAuthor() {
-  // TODO: promise that returns data from database service - GET
-  return NEWS_LIST_MOCK;
+export async function getNewsByAuthors() {
+  try {
+    const { data } = await axios.get(`${API}/author`);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return [];
+}
+
+/**
+ * Get news list for the site by author nickname
+ * @param {string} authorNickname the author nickname
+ * @returns {Promise}
+ * @example
+ * getNewsByAuthor().then((news) => {
+ * console.log(news);
+ * });
+ * */
+export async function getNewsByAuthor(authorNickname) {
+  try {
+    const { data } = await axios.get(`${API}/by/${authorNickname}`);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+
+  return [];
 }
 
 /**

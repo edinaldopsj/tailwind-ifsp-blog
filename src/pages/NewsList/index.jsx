@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NewsCard from '../../components/NewsCard';
 
 /**
@@ -37,7 +38,13 @@ function NewsList(props) {
 }
 
 NewsList.propTypes = {
-  news: 'array',
+  news: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+    }),
+  ),
 };
 
 NewsList.defaultProps = {

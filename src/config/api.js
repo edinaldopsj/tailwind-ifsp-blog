@@ -1,3 +1,3 @@
-const { BASE_URL, PORT } = import.meta.env;
+const { VITE_API_URL, VITE_API_PORT } = import.meta.env;
 
-export const API_URL = `${BASE_URL}:${PORT}/api`;
+export const API = `${VITE_API_URL}:${VITE_API_PORT}`;

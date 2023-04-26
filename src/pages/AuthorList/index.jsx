@@ -1,12 +1,15 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLoaderData } from 'react-router-dom';
 import Wrapper from '../../components/layout/Wrapper';
 import Text from '../../components/Typography/Text';
-import Table from '../../components/Table';
 
 import { LANG } from '../../lang/pt-br';
+import ByAuthorsTable from './ByAuthorsTable';
+import SingleAuthorTable from './SingleAuthorTable';
 
 function AuthorList() {
+  const { authors, news } = useLoaderData();
   const { authorName } = useParams();
 
   return (
@@ -16,19 +19,13 @@ function AuthorList() {
           {LANG.BY_AUTHOR.TITLE}
           :
         </Text>
-        <Text size="text-2xl" className="font-semibold pr-8">
-          {authorName}
+        <Text size="text-2xl" className="font-semibold">
+          {authorName ?? 'Todos'}
         </Text>
       </div>
-      <Table>
-        <thead className="bg-gray-300">
-          <tr className="h-12 border border-gray-100 rounded">
-            <th className="text-left pl-5">
-              Notícia
-            </th>
-          </tr>
-        </thead>
-      </Table>
+
+      {!authorName && <ByAuthorsTable authors={authors} />}
+      {authorName && <SingleAuthorTable news={news} />}
     </Wrapper>
   );
 }

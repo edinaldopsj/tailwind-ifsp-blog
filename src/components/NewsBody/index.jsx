@@ -23,7 +23,7 @@ import { LOCALE, LANG } from '../../lang/pt-br';
  * @param {number} props.data.comments.id - the unique Id of the commentary
  * @param {string} props.data.comments.content - the content the commentary
  * @param {string} props.data.comments.by - the name the commentary owner
- * @returns
+ * @returns {JSX.Element}
  */
 
 function NewsBody(props) {

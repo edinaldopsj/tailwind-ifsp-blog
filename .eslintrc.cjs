@@ -30,6 +30,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'no-console': ['error', { allow: ['error'] }],
     'react/button-has-type': 'off',
     'react/jsx-props-no-spreading': 'off',
   },

@@ -1,21 +1,26 @@
-import React, { Suspense } from 'react';
+import React from 'react';
+import { useLoaderData, Await } from 'react-router-dom';
+
 import Wrapper from './components/layout/Wrapper';
-import Loading from './components/Loading';
 import NewsList from './pages/NewsList';
 
-import { NEWS_LIST_MOCK } from './assets/mocks/news.mock';
-
-export default function App() {
-  const news = NEWS_LIST_MOCK;
-
-  // TODO: create a function to get the latest news
-  // const latestNews = () => NEWS_LIST_MOCK;
+function App() {
+  const newsData = useLoaderData();
 
   return (
     <Wrapper>
-      <Suspense fallback={<Loading />}>
-        <NewsList news={news} />
-      </Suspense>
+      <Await
+        resolve={newsData}
+        errorElement={
+          <div>Could not load news 😬</div>
+          }
+        // eslint-disable-next-line react/no-children-prop
+        children={(news) => (
+          <NewsList news={news} />
+        )}
+      />
     </Wrapper>
   );
 }
+
+export default App;
