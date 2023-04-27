@@ -12,8 +12,9 @@ import ChangePassword from '../pages/User/ChangePassword';
 import Edit from '../pages/User/Edit';
 import NewsPage from '../pages/NewsPage';
 import RegisterNews from '../pages/RegisterNews';
-import UsersList from '../pages/User/List';
 import RegisterReaderPage from '../pages/RegisterReader';
+import CreateNewsPage from '../pages/RegisterNews/CreatePage';
+import UserListPage from '../pages/User/List/page';
 
 import NavBar from '../components/Navbar';
 
@@ -21,7 +22,7 @@ import {
   getNews, getNewsByAuthor, getNewsByAuthors, getNewsItem,
 } from '../providers/news/site';
 import { getUserNews, getUserNewsItem } from '../providers/news/user';
-import CreateNewsPage from '../pages/RegisterNews/CreatePage';
+import { getAllUsers } from '../providers/admin';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -90,7 +91,10 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTE_NAMES.ADMIN_USER_LIST,
-        element: <UsersList />,
+        element: <UserListPage />,
+        loader: async () => defer({
+          users: getAllUsers(),
+        }),
       },
       {
         path: ROUTE_NAMES.ADMIN_USER_EDIT,

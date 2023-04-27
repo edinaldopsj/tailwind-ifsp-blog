@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-// TODO: remove lint rule
 import axios from 'axios';
 import { API } from '../../../config/api';
 
@@ -187,6 +185,6 @@ export async function deleteComment(commentId) {
  * console.log(news);
  * });
  * */
-export function likeNews({ newsId, type }) {
-  // TODO: create like promise in database service - POST
-}
+// export function likeNews({ newsId, type }) {
+//   // TODO: create like promise in database service - POST
+// }

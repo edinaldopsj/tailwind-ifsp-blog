@@ -1,9 +1,7 @@
 import React from 'react';
 import { useCookies } from 'react-cookie';
 import { toast } from 'react-toastify';
-
 import Login from './login';
-
 import { login } from '../../providers/news/user';
 
 function LoginPage() {
