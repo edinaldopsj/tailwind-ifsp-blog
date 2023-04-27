@@ -12,7 +12,6 @@ import Edit from '../pages/User/Edit';
 import NewsPage from '../pages/NewsPage';
 import RegisterNews from '../pages/RegisterNews';
 import UsersList from '../pages/User/List';
-import CreateNew from '../pages/RegisterNews/create';
 import RegisterReaderPage from '../pages/RegisterReader';
 
 import NavBar from '../components/Navbar';
@@ -20,6 +19,8 @@ import NavBar from '../components/Navbar';
 import {
   getNews, getNewsByAuthor, getNewsByAuthors, getNewsItem,
 } from '../providers/news/site';
+import { getUserNews } from '../providers/news/user';
+import CreateNewsPage from '../pages/RegisterNews/CreatePage';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -56,24 +57,24 @@ const router = createBrowserRouter([
         loader: async ({ params }) => defer({
           newsItem: getNewsItem(params?.newsId),
         }),
-
       },
       {
         path: '/news/list',
         element: <RegisterNews />,
+        loader: async () => defer({
+          news: getUserNews(),
+        }),
       },
       {
         path: '/news/create',
-        element: <CreateNew />,
+        element: <CreateNewsPage />,
       },
       {
         path: '/news/by/:authorName?',
         element: <AuthorList />,
         loader: async ({ params }) => defer({
           authors: !params?.authorName ? getNewsByAuthors() : [],
-          news: params?.authorName
-            ? getNewsByAuthor(params?.authorName)
-            : [],
+          news: params?.authorName ? getNewsByAuthor(params?.authorName) : [],
         }),
       },
       {

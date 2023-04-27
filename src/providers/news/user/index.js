@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 // TODO: remove lint rule
+import axios from 'axios';
 import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
+import { API } from '../../../config/api';
 
 /**
  * Get news list for the admin or the author
@@ -16,9 +18,14 @@ import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
  *  console.log(userNews);
  * });
  * */
-export function getUserNews() {
-  // TODO: promise that returns data from database service - GET
-  return NEWS_LIST_MOCK;
+export async function getUserNews() {
+  try {
+    const { data } = await axios.get(`${API}/news`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -59,8 +66,17 @@ export function getUserNewsItem({ userNewsId }) {
   * console.log(userNews);
   * });
  */
-export function createUserNews({ userNews }) {
-  // TODO: cretae promise that updates news in database service - POST
+export async function createUserNews({ userNews, userId }) {
+  try {
+    const { data } = await axios.post(`${API}/news`, {
+      userId,
+      ...userNews,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 /**
   * Update single news item

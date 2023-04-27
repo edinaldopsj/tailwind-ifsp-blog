@@ -1,40 +1,43 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
+import { Form, Link } from 'react-router-dom';
 import Wrapper from '../../components/layout/Wrapper';
 import Title from '../../components/Title';
+import Text from '../../components/Typography/Text';
+import Button from '../../components/Button/Button';
 import ErrorLabel from '../../components/ErrorLabel';
 
 import { defaultValues, resolver } from './validation';
 import { LANG } from '../../lang/pt-br';
-import ColorButton from '../../components/Button/Color';
-import Text from '../../components/Typography/Text';
 
-export default function CreateNew() {
+function CreateNew({ onSubmit }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     reset,
     setFocus,
+    formState: { errors },
   } = useForm({ defaultValues, resolver });
+
+  const handleSubmitForm = (data) => {
+    onSubmit(data);
+    reset();
+    setFocus('title');
+  };
 
   const handleClearForm = () => {
     reset();
     setFocus('title');
   };
 
-  // eslint-disable-next-line no-unused-vars
-  const onSubmit = (data) => {
-    // TODO: add businness logic here
-  };
-
   return (
     <Wrapper>
-      <Title title={LANG.CREATE_NEW.TITLE} />
+      <Title title={LANG.CREATE_NEW.TITLE} className="mt-10" />
       <main>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
+        <Form
+          onSubmit={handleSubmit(handleSubmitForm)}
           className="px-48 flex flex-col gap-2"
         >
           <label htmlFor="title">
@@ -67,33 +70,54 @@ export default function CreateNew() {
             placeholder="Digite o subtítulo"
             {...register('subtitle')}
           />
-          {errors?.subtitle ? <ErrorLabel message={errors.subtitle.message} /> : null}
+          {errors?.subtitle ? (
+            <ErrorLabel message={errors.subtitle.message} />
+          ) : null}
 
           <label htmlFor="text">
             {LANG.CREATE_NEW.FORM.TEXT}
             : *
             <textarea
               id="text"
-              className="border-2 border-gray-300 rounded-md w-full resize-none"
+              name="text"
+              className={`border-2 border-gray-300 rounded-md w-full resize-none ${
+                errors?.subtitle
+                && 'hover:border-red-500 enabled:border-red-500'
+              }`}
               rows={15}
-              required
+              {...register('text')}
             />
           </label>
 
+          {errors?.text ? <ErrorLabel message={errors.text.message} /> : null}
+
           {/* Buttons */}
           <section className="flex flex-row justify-between">
-            <ColorButton color="secondary" onClick={handleClearForm}>
+            <Button defaultButton onClick={handleClearForm}>
               <Text>{LANG.CREATE_NEW.FORM.CANCEL_BUTTON}</Text>
-            </ColorButton>
+            </Button>
 
-            <ColorButton color="secondary" type="submit" onClick={handleClearForm}>
+            <Button type="submit" defaultButton>
               <Text>{LANG.CREATE_NEW.FORM.CONFIRM_BUTTON}</Text>
-            </ColorButton>
+            </Button>
           </section>
-
-        </form>
-
+        </Form>
+        <div className="flex justify-center">
+          <Link className="text-blue-400 no-underline" to="/news/list">
+            {LANG.NEWS.BACK}
+          </Link>
+        </div>
       </main>
     </Wrapper>
   );
 }
+
+CreateNew.propTypes = {
+  onSubmit: PropTypes.func,
+};
+
+CreateNew.defaultProps = {
+  onSubmit: () => {},
+};
+
+export default CreateNew;
