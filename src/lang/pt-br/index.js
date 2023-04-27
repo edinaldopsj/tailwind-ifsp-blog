@@ -162,7 +162,7 @@ export const LANG = {
 
   DELETE_MODAL: {
     TITLE: 'Atenção, essa ação não pode ser desfeita!',
-    MESSAGE: 'Deseja deletar a notícia?',
+    MESSAGE: 'Deseja remover este item?',
     CONFIRM_BUTTON: 'Sim, desejo excluir!',
   },
 };

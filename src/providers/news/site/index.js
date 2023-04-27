@@ -134,8 +134,23 @@ export async function createComment({ comment, userId, newId }) {
  * console.log(comment);
  * });
  * */
-export function updateComment({ comment }) {
-  // TODO: create promise that updates comment from user in database service - PUT
+export async function updateComment({
+  commentaryId,
+  comment,
+  userId,
+  newId,
+}) {
+  try {
+    const { data } = await axios.put(`${API}/comments/${commentaryId}`, {
+      comment,
+      userId,
+      newId,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -150,8 +165,14 @@ export function updateComment({ comment }) {
  * console.log(comment);
  * });
  * */
-export function deleteComment({ comment }) {
-  // TODO: create promise that deletes comment from user in database service - DELETE
+export async function deleteComment(commentId) {
+  try {
+    const { data } = await axios.delete(`${API}/comments/${commentId}`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**

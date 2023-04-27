@@ -7,7 +7,7 @@ import Loading from '../../components/Loading';
 import ErrorPage from '../ErrorPage';
 
 import { ERROR_MESSAGES } from '../../lang/pt-br/errors';
-import { createComment } from '../../providers/news/site';
+import { createComment, deleteComment, updateComment } from '../../providers/news/site';
 
 function NewsPage() {
   const { newsItem } = useLoaderData();
@@ -23,6 +23,38 @@ function NewsPage() {
 
     if (comment) {
       toast('Comentário criado com sucesso!', {
+        type: 'success',
+        autoClose: 3000,
+      });
+
+      revalidator.revalidate();
+    }
+  };
+
+  const onEditComment = async ({ commentary, commentaryId, newsId }) => {
+    // TODO: remove arbitrary userId
+    const comment = await updateComment({
+      commentaryId,
+      comment: commentary,
+      userId: 2,
+      newId: newsId,
+    });
+
+    if (comment) {
+      toast('Comentário editado com sucesso!', {
+        type: 'success',
+        autoClose: 3000,
+      });
+
+      revalidator.revalidate();
+    }
+  };
+
+  const onDeleteComment = async (commentId) => {
+    const comment = await deleteComment(commentId);
+
+    if (comment) {
+      toast('Comentário removido com sucesso!', {
         type: 'success',
         autoClose: 3000,
       });
@@ -52,8 +84,8 @@ function NewsPage() {
             onComment={onComment}
             onLike={onLike}
             onDislike={onDislike}
-            onDeleteComment
-            onEditComment
+            onDeleteComment={onDeleteComment}
+            onEditComment={onEditComment}
           />
         )}
       />
