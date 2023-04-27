@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, defer } from 'react-router-dom';
 
+import { ROUTE_NAMES } from './names';
 import App from '../App';
 import AuthorList from '../pages/AuthorList';
 import ErrorPage from '../pages/ErrorPage';
@@ -19,7 +20,7 @@ import NavBar from '../components/Navbar';
 import {
   getNews, getNewsByAuthor, getNewsByAuthors, getNewsItem,
 } from '../providers/news/site';
-import { getUserNews } from '../providers/news/user';
+import { getUserNews, getUserNewsItem } from '../providers/news/user';
 import CreateNewsPage from '../pages/RegisterNews/CreatePage';
 
 const routerErrorElement = <ErrorPage />;
@@ -29,48 +30,33 @@ const router = createBrowserRouter([
     element: <NavBar />,
     children: [
       {
-        path: '/',
+        path: ROUTE_NAMES.ROOT,
         element: <App />,
         loader: async () => defer({
           news: getNews(),
         }),
       },
       {
-        path: '/admin/new',
+        path: ROUTE_NAMES.ADMIN_CREATE,
         element: <RegisterAdmin />,
       },
       {
-        path: '/login',
+        path: ROUTE_NAMES.LOGIN,
         element: <Login />,
       },
       {
-        path: '/authors/new',
+        path: ROUTE_NAMES.AUTHOR_CREATE,
         element: <RegisterAuthor />,
       },
       {
-        path: '/readers/new',
-        element: <RegisterReaderPage />,
-      },
-      {
-        path: '/news/:newsId',
+        path: ROUTE_NAMES.NEWS_VIEW_BY_ID,
         element: <NewsPage />,
         loader: async ({ params }) => defer({
           newsItem: getNewsItem(params?.newsId),
         }),
       },
       {
-        path: '/news/list',
-        element: <RegisterNews />,
-        loader: async () => defer({
-          news: getUserNews(),
-        }),
-      },
-      {
-        path: '/news/create',
-        element: <CreateNewsPage />,
-      },
-      {
-        path: '/news/by/:authorName?',
+        path: ROUTE_NAMES.NEWS_BY_AUTHOR_ID_ROUTER,
         element: <AuthorList />,
         loader: async ({ params }) => defer({
           authors: !params?.authorName ? getNewsByAuthors() : [],
@@ -78,15 +64,40 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: '/user/list',
+        path: ROUTE_NAMES.READERS_CREATE,
+        element: <RegisterReaderPage />,
+      },
+      {
+        path: ROUTE_NAMES.AUTHOR_LIST_NEWS,
+        element: <RegisterNews />,
+        loader: async () => defer({
+          news: getUserNews(),
+        }),
+      },
+      {
+        path: ROUTE_NAMES.AUTHOR_CREATE_NEWS,
+        element: <CreateNewsPage />,
+        loader: async () => defer({
+          news: {},
+        }),
+      },
+      {
+        path: ROUTE_NAMES.AUTHOR_EDIT_ROUTER,
+        element: <CreateNewsPage />,
+        loader: async ({ params }) => defer({
+          news: getUserNewsItem(params?.newsId),
+        }),
+      },
+      {
+        path: ROUTE_NAMES.ADMIN_USER_LIST,
         element: <UsersList />,
       },
       {
-        path: '/user/edit',
+        path: ROUTE_NAMES.ADMIN_USER_EDIT,
         element: <Edit />,
       },
       {
-        path: '/user/password',
+        path: ROUTE_NAMES.USER_PASSWORD,
         element: <ChangePassword />,
       },
     ],

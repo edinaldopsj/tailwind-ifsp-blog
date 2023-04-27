@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import CodeTitle from '../CodeTitle';
+import { ROUTE_NAMES } from '../../router/names';
 
 function Navbar() {
   const roles = {
@@ -15,7 +16,10 @@ function Navbar() {
     <main>
       <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02">
         <h1 className="w-3/12">
-          <Link to="/" className="flex gap-1 items-baseline p-4 text-xl font-semibold border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active">
+          <Link
+            to={ROUTE_NAMES.ROOT}
+            className="flex gap-1 items-baseline p-4 text-xl font-semibold border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active"
+          >
             <CodeTitle title="IFSP - Notícias" />
           </Link>
         </h1>
@@ -23,32 +27,51 @@ function Navbar() {
         <nav className="nav font-semibold text-lg">
           <ul className="flex items-center">
             <li>
-              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active" to="/">
+              <Link
+                to={ROUTE_NAMES.ROOT}
+                className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active"
+              >
                 ver Últimas News
               </Link>
             </li>
             <li>
-              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active" to="/news/by">ver Por Apelido</Link>
+              <Link
+                className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer active"
+                to={ROUTE_NAMES.NEWS_BY_AUTHOR}
+              >
+                ver Por Apelido
+              </Link>
             </li>
 
-            {isLoggedIn
-              ? (
-                <li>
-                  <Link to="/news/list" className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
-                    minhas News
-                  </Link>
-                </li>
-              )
-              : null}
+            {isLoggedIn ? (
+              <li>
+                <Link
+                  to={ROUTE_NAMES.READERS_LIST_NEWS}
+                  className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+                >
+                  minhas News
+                </Link>
+              </li>
+            ) : null}
 
             {/* ADMIN */}
             {roles.isAdmin ? (
               <>
                 <li>
-                  <Link to="/" className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">ver Usuários</Link>
+                  <Link
+                    to={ROUTE_NAMES.ROOT}
+                    className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+                  >
+                    ver Usuários
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/" className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">ver Notícias</Link>
+                  <Link
+                    to={ROUTE_NAMES.ROOT}
+                    className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+                  >
+                    ver Notícias
+                  </Link>
                 </li>
               </>
             ) : null}
@@ -56,22 +79,29 @@ function Navbar() {
         </nav>
 
         <div className="w-3/12 flex justify-end">
-          {
-          isLoggedIn ? (
-            <a href="/" className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer">
+          {isLoggedIn ? (
+            <a
+              href="/"
+              className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+            >
               sair
             </a>
           ) : (
             <>
-              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer" to="/readers/new">
+              <Link
+                className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+                to={ROUTE_NAMES.READERS_CREATE}
+              >
                 Cadastrar
               </Link>
-              <Link className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer" to="/login">
+              <Link
+                className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
+                to={ROUTE_NAMES.LOGIN}
+              >
                 Login
               </Link>
             </>
-          )
-        }
+          )}
         </div>
       </header>
       <Outlet />

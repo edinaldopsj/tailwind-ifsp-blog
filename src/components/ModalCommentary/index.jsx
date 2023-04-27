@@ -3,6 +3,7 @@ import ColorButton from '../Button/Color';
 import Text from '../Typography/Text';
 
 function ModalCommentary(props) {
+  // eslint-disable-next-line react/prop-types
   const { data } = props;
 
   return (
@@ -16,6 +17,7 @@ function ModalCommentary(props) {
                 id="text"
                 className="border-2 border-gray-300 rounded-md w-full resize-none"
                 rows={10}
+                // eslint-disable-next-line react/prop-types
                 value={data?.commentary}
                 required
               />

@@ -1,0 +1,17 @@
+export const ROUTE_NAMES = {
+  ROOT: '/',
+  LOGIN: '/login',
+  ADMIN_CREATE: '/admin/create',
+  ADMIN_USER_LIST: '/admin/user/list',
+  ADMIN_USER_EDIT: '/admin/user/edit',
+  AUTHOR_CREATE: '/authors/new',
+  AUTHOR_LIST_NEWS: '/author/news/list',
+  AUTHOR_CREATE_NEWS: '/author/news/create',
+  AUTHOR_EDIT: '/author/news',
+  AUTHOR_EDIT_ROUTER: '/author/news/:newsId',
+  NEWS_VIEW_BY_ID: '/news/:newsId',
+  NEWS_BY_AUTHOR_ID_ROUTER: '/news/by/:authorName?',
+  NEWS_BY_AUTHOR: '/news/by/',
+  READERS_CREATE: '/readers/create',
+  USER_PASSWORD: '/user/password',
+};

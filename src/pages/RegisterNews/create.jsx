@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
@@ -11,8 +11,9 @@ import ErrorLabel from '../../components/ErrorLabel';
 
 import { defaultValues, resolver } from './validation';
 import { LANG } from '../../lang/pt-br';
+import { ROUTE_NAMES } from '../../router/names';
 
-function CreateNew({ onSubmit }) {
+function CreateNew({ onSubmit, news }) {
   const {
     register,
     handleSubmit,
@@ -22,19 +23,41 @@ function CreateNew({ onSubmit }) {
   } = useForm({ defaultValues, resolver });
 
   const handleSubmitForm = (data) => {
-    onSubmit(data);
-    reset();
+    let dataToSubmit = data;
+
+    if (news?.id) {
+      dataToSubmit = {
+        ...data,
+        id: news.id,
+      };
+    }
+
+    onSubmit(dataToSubmit);
     setFocus('title');
+    reset();
   };
 
   const handleClearForm = () => {
-    reset();
     setFocus('title');
+    reset();
   };
+
+  useEffect(() => {
+    if (news?.id) {
+      reset(news);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Wrapper>
-      <Title title={LANG.CREATE_NEW.TITLE} className="mt-10" />
+      <Title
+        title={
+          !news?.id ? LANG.CREATE_NEW.CREATE_TITLE
+            : LANG.CREATE_NEW.EDIT_TITLE
+        }
+        className="mt-10"
+      />
       <main>
         <Form
           onSubmit={handleSubmit(handleSubmitForm)}
@@ -80,7 +103,7 @@ function CreateNew({ onSubmit }) {
             <textarea
               id="text"
               name="text"
-              className={`border-2 border-gray-300 rounded-md w-full resize-none ${
+              className={`border border-gray-700 w-full resize-none p-2 ${
                 errors?.subtitle
                 && 'hover:border-red-500 enabled:border-red-500'
               }`}
@@ -103,7 +126,10 @@ function CreateNew({ onSubmit }) {
           </section>
         </Form>
         <div className="flex justify-center">
-          <Link className="text-blue-400 no-underline" to="/news/list">
+          <Link
+            className="text-blue-400 no-underline"
+            to={ROUTE_NAMES.AUTHOR_LIST_NEWS}
+          >
             {LANG.NEWS.BACK}
           </Link>
         </div>
@@ -114,10 +140,14 @@ function CreateNew({ onSubmit }) {
 
 CreateNew.propTypes = {
   onSubmit: PropTypes.func,
+  news: PropTypes.shape({
+    id: PropTypes.number,
+  }),
 };
 
 CreateNew.defaultProps = {
   onSubmit: () => {},
+  news: {},
 };
 
 export default CreateNew;

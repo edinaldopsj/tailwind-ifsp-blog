@@ -8,10 +8,6 @@ import { API } from '../../../config/api';
  * Get news list for the admin or the author
  * @param {Headers} userId - the user id from the token object
  * @param {Headers} role - the user role from the token object
- * @param {object[]} userNews The array of news list for the admin or the author
- * @param {string} userNews.id The news id
- * @param {string} userNews.updatedAt The news updatedAt
- * @param {string} userNews.title The news title
  * @returns {Promise}
  * @example
  * getNews().then((userNews) => {
@@ -20,7 +16,7 @@ import { API } from '../../../config/api';
  * */
 export async function getUserNews() {
   try {
-    const { data } = await axios.get(`${API}/news`);
+    const { data } = await axios.get(`${API}/author/2`);
 
     return data;
   } catch (error) {
@@ -46,8 +42,14 @@ export async function getUserNews() {
  * console.log(userNews);
  * });
  */
-export function getUserNewsItem({ userNewsId }) {
-  // TODO: promise that returns data from database service - GET
+export async function getUserNewsItem(userNewsId) {
+  try {
+    const { data } = await axios.get(`${API}/news/${userNewsId}`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -94,8 +96,17 @@ export async function createUserNews({ userNews, userId }) {
   * console.log(userNews);
   * });
  */
-export function updateUserNews({ userNews }) {
-  // TODO: create promise that updates news in database service - PUT
+export async function updateUserNews({ userNews, userId, newsId }) {
+  try {
+    const { data } = await axios.put(`${API}/news/${newsId}`, {
+      userId,
+      ...userNews,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -109,8 +120,14 @@ export function updateUserNews({ userNews }) {
  * console.log(userNews);
  * });
  * */
-export function deleteUserNews({ userNewsId }) {
-  // TODO: create promise that deletes news in database service - DELETE
+export async function deleteUserNews(userNewsId) {
+  try {
+    const { data } = await axios.delete(`${API}/news/${userNewsId}`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -124,6 +141,12 @@ export function deleteUserNews({ userNewsId }) {
  * console.log(userNews);
  * });
  * */
-export function publishUserNews({ userNewsId }) {
-  // TODO: create promise that publishes news in database service - PATCH
+export async function publishUserNews(userNewsId) {
+  try {
+    const { data } = await axios.put(`${API}/publish/${userNewsId}`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }

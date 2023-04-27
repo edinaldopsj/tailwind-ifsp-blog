@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Button(props) {
   const {
-    children, type, onClick, className, small, defaultButton,
+    children, type, onClick, className, small, defaultButton, disabled, ...rest
   } = props;
 
   let classNames = `px-4 py-2 border-2 ${className}`;
@@ -21,6 +21,7 @@ function Button(props) {
       type={type}
       onClick={onClick}
       className={`border-2 ${classNames}`}
+      {...rest}
     >
       {children}
     </button>
@@ -34,6 +35,7 @@ Button.propTypes = {
   className: PropTypes.string,
   small: PropTypes.bool,
   defaultButton: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -43,6 +45,7 @@ Button.defaultProps = {
   className: '',
   small: false,
   defaultButton: false,
+  disabled: false,
 };
 
 export default Button;

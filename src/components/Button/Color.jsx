@@ -11,7 +11,12 @@ import Button from './Button';
  */
 
 function ColorButton({
-  className, children, color, onClick,
+  className,
+  children,
+  color,
+  onClick,
+  disabled,
+  ...rest
 }) {
   const colorClass = useMemo(() => {
     switch (color) {
@@ -34,24 +39,28 @@ function ColorButton({
     <Button
       className={`${colorClass} ${otherClasses} ${className}`}
       onClick={onClick}
+      disabled={disabled}
+      {...rest}
     >
       {children}
     </Button>
   );
 }
 
-ColorButton.defaultProps = {
-  children: null,
-  className: '',
-  color: 'blue',
-  onClick: () => {},
-};
-
 ColorButton.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
+ColorButton.defaultProps = {
+  children: null,
+  className: '',
+  color: 'blue',
+  onClick: () => {},
+  disabled: false,
 };
 
 export default ColorButton;

@@ -109,9 +109,13 @@ export const LANG = {
     ACTIONS: {
       EDIT: 'Editar',
       PUBLISH: 'Publicar',
+      PUBLISHED: 'Publicado',
       DELETE: 'Excluir',
       NEW: 'Novo',
     },
+
+    PUBLISH_SUCCESS: 'Notícia publicada com sucesso!',
+    DELETE_SUCCESS: 'Notícia removida com sucesso!',
   },
 
   /** RF - 11 */
@@ -137,7 +141,8 @@ export const LANG = {
   },
 
   CREATE_NEW: {
-    TITLE: 'Cadastro de Notícias',
+    CREATE_TITLE: 'Cadastro de Notícias',
+    EDIT_TITLE: 'Editar notícia',
 
     FORM: {
       TITLE: 'Título',
@@ -147,5 +152,17 @@ export const LANG = {
       CONFIRM_BUTTON: 'Enviar',
       CANCEL_BUTTON: 'Cancelar',
     },
+  },
+
+  PUBLISH_MODAL: {
+    TITLE: 'Atenção, essa ação não pode ser desfeita!',
+    MESSAGE: 'Deseja publicar a notícia?',
+    CONFIRM_BUTTON: 'Sim, desejo publicar!',
+  },
+
+  DELETE_MODAL: {
+    TITLE: 'Atenção, essa ação não pode ser desfeita!',
+    MESSAGE: 'Deseja deletar a notícia?',
+    CONFIRM_BUTTON: 'Sim, desejo excluir!',
   },
 };
