@@ -2,22 +2,24 @@ import React from 'react';
 import { createBrowserRouter, defer } from 'react-router-dom';
 
 import App from '../App';
+import AuthorList from '../pages/AuthorList';
 import ErrorPage from '../pages/ErrorPage';
 import Login from '../pages/Login';
 import RegisterAdmin from '../pages/RegisterAdmin';
 import RegisterAuthor from '../pages/RegisterAuthor';
 import ChangePassword from '../pages/User/ChangePassword';
 import Edit from '../pages/User/Edit';
-import RegisterReader from '../pages/RegisterReader';
 import NewsPage from '../pages/NewsPage';
 import RegisterNews from '../pages/RegisterNews';
 import UsersList from '../pages/User/List';
-import AuthorList from '../pages/AuthorList';
+import CreateNew from '../pages/RegisterNews/create';
+import RegisterReaderPage from '../pages/RegisterReader';
+
 import NavBar from '../components/Navbar';
+
 import {
   getNews, getNewsByAuthor, getNewsByAuthors, getNewsItem,
 } from '../providers/news/site';
-import CreateNew from '../pages/RegisterNews/create';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -46,12 +48,14 @@ const router = createBrowserRouter([
       },
       {
         path: '/readers/new',
-        element: <RegisterReader />,
+        element: <RegisterReaderPage />,
       },
       {
         path: '/news/:newsId',
         element: <NewsPage />,
-        loader: async ({ params }) => (params?.newsId ? defer(getNewsItem(params?.newsId)) : {}),
+        loader: async ({ params }) => defer({
+          newsItem: getNewsItem(params?.newsId),
+        }),
 
       },
       {

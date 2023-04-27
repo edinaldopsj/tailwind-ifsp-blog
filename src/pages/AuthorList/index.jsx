@@ -7,10 +7,10 @@ import Text from '../../components/Typography/Text';
 import ByAuthorsTable from './ByAuthorsTable';
 import SingleAuthorTable from './SingleAuthorTable';
 import Loading from '../../components/Loading';
+import ErrorPage from '../ErrorPage';
 
 import { LANG } from '../../lang/pt-br';
 import { ERROR_MESSAGES } from '../../lang/pt-br/errors';
-import ErrorPage from '../ErrorPage';
 
 function AuthorList() {
   const { authors, news } = useLoaderData();
@@ -26,6 +26,8 @@ function AuthorList() {
           </Text>
         </div>
       </div>
+
+      <Text as="h1" size="text-2xl" className="text-center mt-10">{authorName ?? ''}</Text>
 
       {!authorName && (
         <Suspense fallback={<Loading />}>

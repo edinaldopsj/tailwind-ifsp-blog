@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 // TODO: remove lint rule
 import axios from 'axios';
-import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
 import { API } from '../../../config/api';
 
 /**
@@ -108,8 +107,18 @@ export async function getNewsItem(newsId) {
  * console.log(comment);
  * });
  *  */
-export function createComment({ comment }) {
-  // TODO: promise that creates comment from user in database service - POST
+export async function createComment({ comment, userId, newId }) {
+  try {
+    const { data } = await axios.post(`${API}/comments`, {
+      comment,
+      userId,
+      newId,
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**

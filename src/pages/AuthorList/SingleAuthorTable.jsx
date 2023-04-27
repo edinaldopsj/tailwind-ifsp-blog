@@ -12,7 +12,7 @@ function SingleAuthorTable({ news }) {
           <th className="text-left pl-5">
             Notícia
           </th>
-          <th className="text-rigth pr-2 w-32">
+          <th className="w-32 pr-12">
             Link
           </th>
         </tr>
@@ -23,7 +23,7 @@ function SingleAuthorTable({ news }) {
             <td className="pl-5">
               <Text>{newsItem?.title}</Text>
             </td>
-            <td className="text-rigth pr-2 w-32">
+            <td>
               <Link to={`/news/${newsItem?.id}`}>
                 <Text>Visualizar</Text>
               </Link>
