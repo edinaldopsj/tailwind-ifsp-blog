@@ -135,4 +135,17 @@ export const LANG = {
       NEW: 'Novo',
     },
   },
+
+  CREATE_NEW: {
+    TITLE: 'Cadastro de Notícias',
+
+    FORM: {
+      TITLE: 'Título',
+      SUBTITLE: 'Subtítulo',
+      TEXT: 'Texto',
+
+      CONFIRM_BUTTON: 'Enviar',
+      CANCEL_BUTTON: 'Cancelar',
+    },
+  },
 };

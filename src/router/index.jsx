@@ -15,6 +15,7 @@ import UsersList from '../pages/User/List';
 import AuthorList from '../pages/AuthorList';
 import NavBar from '../components/Navbar';
 import { getNews, getNewsByAuthor, getNewsByAuthors } from '../providers/news/site';
+import CreateNew from '../pages/RegisterNews/create';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/news/list',
         element: <RegisterNews />,
+      },
+      {
+        path: '/news/create',
+        element: <CreateNew />,
       },
       {
         path: '/news/by/:authorName?',
