@@ -23,6 +23,7 @@ import {
 } from '../providers/news/site';
 import { getUserNews, getUserNewsItem } from '../providers/news/user';
 import { getAllUsers } from '../providers/admin';
+import Logout from '../pages/Logout';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -69,10 +70,10 @@ const router = createBrowserRouter([
         element: <RegisterReaderPage />,
       },
       {
-        path: ROUTE_NAMES.AUTHOR_LIST_NEWS,
+        path: ROUTE_NAMES.AUTHOR_LIST_NEWS_ROUTER,
         element: <RegisterNews />,
-        loader: async () => defer({
-          news: getUserNews(),
+        loader: async ({ params }) => defer({
+          news: getUserNews(params?.authorId),
         }),
       },
       {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
       {
         path: ROUTE_NAMES.USER_PASSWORD,
         element: <ChangePassword />,
+      },
+      {
+        path: ROUTE_NAMES.LOGOUT,
+        element: <Logout />,
       },
     ],
   },

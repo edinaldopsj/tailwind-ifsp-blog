@@ -15,6 +15,7 @@ export const LANG = {
       DELETE: 'Excluir',
       CANCEL: 'Limpar',
       SUBMIT: 'Enviar',
+      LOGIN: 'Faça login para comentar nesta noticia',
     },
     BACK: 'Voltar para o início',
   },
@@ -132,6 +133,7 @@ export const LANG = {
 
     USERS_TABLE: {
       USERS_NAME: 'Nome',
+      USERS_NICK: 'Apelido',
       USERS_EMAIL: 'E-mail',
       USERS_ROLE: 'Tipo',
       USERS_ACTIONS: 'Ações',

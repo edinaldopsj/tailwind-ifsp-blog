@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { useLoaderData, Await, useRevalidator } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import { useCookies } from 'react-cookie';
 import NewsBody from '../../components/NewsBody';
 import Loading from '../../components/Loading';
 import ErrorPage from '../ErrorPage';
@@ -13,11 +14,13 @@ function NewsPage() {
   const { newsItem } = useLoaderData();
   const revalidator = useRevalidator();
 
+  const [cookie] = useCookies(['token']);
+
   const onComment = async ({ commentary, id }) => {
     // TODO: remove arbitrary userId
     const comment = await createComment({
       comment: commentary,
-      userId: 2,
+      userId: cookie.token,
       newId: id,
     });
 
@@ -36,7 +39,7 @@ function NewsPage() {
     const comment = await updateComment({
       commentaryId,
       comment: commentary,
-      userId: 2,
+      userId: cookie.token,
       newId: newsId,
     });
 

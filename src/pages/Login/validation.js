@@ -2,12 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import yup from '../../config/yup';
 
 const validationSchema = yup.object({
-  email: yup.string().email().required(),
+  nickname: yup.string().required(),
   password: yup.string().required(),
 });
 
 const defaultValues = {
-  email: '',
+  nickname: '',
   password: '',
 };
 

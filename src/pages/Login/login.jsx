@@ -32,20 +32,22 @@ function Login({ onSubmit }) {
           onSubmit={handleSubmit(onSubmit)}
           className="px-48 flex flex-col gap-2"
         >
-          <label htmlFor="email">
-            {LANG.REGISTER_AUTHOR.FORM.EMAIL}
+          <label htmlFor="nickname">
+            {LANG.REGISTER_AUTHOR.FORM.NICKNAME}
             : *
           </label>
           <input
             className={`border border-black w-full p-3 ${
-              errors?.email && 'hover:border-red-500 enabled: border-red-500'
+              errors?.nickname && 'hover:border-red-500 enabled: border-red-500'
             }`}
-            name="email"
-            type="email"
-            placeholder="E-Mail*"
-            {...register('email')}
+            name="nickname"
+            type="text"
+            placeholder="Apelido*"
+            {...register('nickname')}
           />
-          {errors?.email ? <ErrorLabel message={errors.email.message} /> : null}
+          {errors?.nickname ? (
+            <ErrorLabel message={errors.nickname.message} />
+          ) : null}
 
           <label htmlFor="password">
             {LANG.REGISTER_READER.FORM.PASSWORD}

@@ -16,7 +16,7 @@ import { API } from '../../config/api';
  * */
 export async function getAllUsers() {
   try {
-    const { data } = await axios.get(`${API}/users`);
+    const { data } = await axios.get(`${API}/author`);
 
     return data;
   } catch (error) {

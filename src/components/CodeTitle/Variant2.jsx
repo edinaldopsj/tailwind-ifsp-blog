@@ -5,7 +5,7 @@ function TitleVariant2({ title }) {
   return (
     <>
       <span className="text-base text-blue-500 font-bold">{'<%'}</span>
-      <span className="font-semibold leading-tight text-base">=</span>
+      <span className="font-semibold leading-tight text-base">println</span>
       <span className=" hover:text-blue-700">
         (
         {title}

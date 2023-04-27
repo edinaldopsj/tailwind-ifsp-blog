@@ -4,18 +4,19 @@ import {
   useNavigate, useParams, Await, useLoaderData,
 } from 'react-router-dom';
 
+import { useCookies } from 'react-cookie';
 import Loading from '../../components/Loading';
 import CreateNew from './create';
 import ErrorPage from '../ErrorPage';
 
 import { createUserNews, updateUserNews } from '../../providers/news/user';
 import { ERROR_MESSAGES } from '../../lang/pt-br/errors';
-import { ROUTE_NAMES } from '../../router/names';
 
 function CreateNewsPage() {
   const navigate = useNavigate();
   const { newsId } = useParams();
   const { news = undefined } = useLoaderData();
+  const [cookie] = useCookies(['token']);
 
   const onSubmit = async (data) => {
     if (!data?.id) {
@@ -25,7 +26,7 @@ function CreateNewsPage() {
           subtitle: data?.subtitle,
           content: data?.text,
         },
-        userId: 2, // TODO: remove arbitrary userId
+        userId: cookie?.token,
       });
 
       if (newNews) {
@@ -41,7 +42,7 @@ function CreateNewsPage() {
           subtitle: data?.subtitle,
           content: data?.text,
         },
-        userId: 2, // TODO: remove arbitrary userId
+        userId: cookie?.token,
         newsId: data?.id,
       });
 
@@ -53,7 +54,7 @@ function CreateNewsPage() {
       }
     }
 
-    navigate(ROUTE_NAMES.AUTHOR_LIST_NEWS);
+    navigate(`/author/${cookie?.token}/news/list`);
   };
 
   return (newsId && news) ? (

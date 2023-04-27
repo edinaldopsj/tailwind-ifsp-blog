@@ -47,20 +47,13 @@ function RegisterNews() {
         resolve={news}
         errorElement={<ErrorPage message={ERROR_MESSAGES.NO_NEWS} />}
       >
-        {(newsData) => {
-          const filteredNews = newsData.filter(
-            // TODO: remove hardcoded date filter
-            (item) => item?.deletedAt === '2222-12-22T00:00:00.000Z',
-          );
-
-          return (
-            <List
-              userNews={filteredNews}
-              onPublish={onPublish}
-              onDelete={onDelete}
-            />
-          );
-        }}
+        {(newsData) => (
+          <List
+            userNews={newsData}
+            onPublish={onPublish}
+            onDelete={onDelete}
+          />
+        )}
       </Await>
     </Suspense>
   );

@@ -6,6 +6,7 @@ export const ROUTE_NAMES = {
   ADMIN_USER_EDIT: '/admin/user/edit',
   AUTHOR_CREATE: '/authors/new',
   AUTHOR_LIST_NEWS: '/author/news/list',
+  AUTHOR_LIST_NEWS_ROUTER: '/author/:authorId/news/list',
   AUTHOR_CREATE_NEWS: '/author/news/create',
   AUTHOR_EDIT: '/author/news',
   AUTHOR_EDIT_ROUTER: '/author/news/:newsId',
@@ -14,4 +15,5 @@ export const ROUTE_NAMES = {
   NEWS_BY_AUTHOR: '/news/by/',
   READERS_CREATE: '/readers/create',
   USER_PASSWORD: '/user/password',
+  LOGOUT: '/logout',
 };

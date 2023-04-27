@@ -4,6 +4,7 @@ import { Link, Form, useParams } from 'react-router-dom';
 import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/react/24/solid';
 
 import { useForm } from 'react-hook-form';
+import { useCookies } from 'react-cookie';
 import Title from '../Title';
 import Button from '../Button/Button';
 
@@ -36,6 +37,7 @@ import DefaultDialog from '../Modals/Default';
  */
 
 function NewsBody(props) {
+  const [cookie] = useCookies(['token']);
   const { newsId } = useParams();
   const {
     register,
@@ -141,34 +143,41 @@ function NewsBody(props) {
         </section>
 
         {/* Comments section */}
-        <section>
-          <Form
-            onSubmit={handleSubmit(handleOnComment)}
-            action={`/news/${newsId}`}
-          >
-            <label htmlFor="commentary">
-              Comentar
-              <textarea
-                id="commentary"
-                className="border-2 border-gray-300 rounded-md w-full resize-none"
-                rows={5}
-                {...register('commentary')}
-              />
-              {errors.commentary ? (
-                <ErrorLabel message={errors.commentary.message} />
-              ) : null}
-              <div className="flex flex-row justify-between">
-                <Button defaultButton small onClick={handleCancelComment}>
-                  {LANG.NEWS.COMMENTS.CANCEL}
-                </Button>
-                <Button defaultButton small type="submit">
-                  {LANG.NEWS.COMMENTS.SUBMIT}
-                </Button>
-              </div>
-            </label>
-            <input type="hidden" value={newsId} {...register('id')} />
-          </Form>
-
+        {cookie?.token ? (
+          <section>
+            <Form
+              onSubmit={handleSubmit(handleOnComment)}
+              action={`/news/${newsId}`}
+            >
+              <label htmlFor="commentary">
+                Comentar
+                <textarea
+                  id="commentary"
+                  className="border-2 border-gray-300 rounded-md w-full resize-none"
+                  rows={5}
+                  {...register('commentary')}
+                />
+                {errors.commentary ? (
+                  <ErrorLabel message={errors.commentary.message} />
+                ) : null}
+                <div className="flex flex-row justify-between">
+                  <Button defaultButton small onClick={handleCancelComment}>
+                    {LANG.NEWS.COMMENTS.CANCEL}
+                  </Button>
+                  <Button defaultButton small type="submit">
+                    {LANG.NEWS.COMMENTS.SUBMIT}
+                  </Button>
+                </div>
+              </label>
+              <input type="hidden" value={newsId} {...register('id')} />
+            </Form>
+          </section>
+        ) : (
+          <Link className="text-blue-400 no-underline" to={ROUTE_NAMES.LOGIN}>
+            {LANG.NEWS.COMMENTS.LOGIN}
+          </Link>
+        )}
+        <section className="mt-8">
           {/* Comment list */}
           <section className="mt-8">
             {data?.comment?.map((commentItem) => (
@@ -178,13 +187,15 @@ function NewsBody(props) {
                 </header>
                 <p className="font-thin text-black">{commentItem?.comment}</p>
                 <footer className="flex flex-row-reverse gap-2">
-                  <Button
-                    defaultButton
-                    small
-                    onClick={() => handleEditModal(commentItem?.id)}
-                  >
-                    {LANG.NEWS.COMMENTS.EDIT}
-                  </Button>
+                  {cookie?.token === commentItem?.userID && (
+                    <Button
+                      defaultButton
+                      small
+                      onClick={() => handleEditModal(commentItem?.id)}
+                    >
+                      {LANG.NEWS.COMMENTS.EDIT}
+                    </Button>
+                  )}
                   <Button
                     defaultButton
                     small
@@ -234,7 +245,11 @@ function NewsBody(props) {
               <Button defaultButton small onClick={handleCancelComment}>
                 {LANG.NEWS.COMMENTS.CANCEL}
               </Button>
-              <Button defaultButton small onClick={() => editComment(operationId)}>
+              <Button
+                defaultButton
+                small
+                onClick={() => editComment(operationId)}
+              >
                 {LANG.NEWS.COMMENTS.SUBMIT}
               </Button>
             </div>

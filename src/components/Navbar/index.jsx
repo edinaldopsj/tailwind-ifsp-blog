@@ -1,16 +1,20 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+
+import { useCookies } from 'react-cookie';
 import CodeTitle from '../CodeTitle';
 import { ROUTE_NAMES } from '../../router/names';
 
 function Navbar() {
+  // eslint-disable-next-line no-unused-vars
+  const [cookie] = useCookies(['token']);
   const roles = {
     isAdmin: false,
     isReader: true,
-    isAuthor: false,
+    isAuthor: true,
   };
 
-  const isLoggedIn = false;
+  const isLoggedIn = cookie?.token ?? false;
 
   return (
     <main>
@@ -46,7 +50,7 @@ function Navbar() {
             {isLoggedIn ? (
               <li>
                 <Link
-                  to={ROUTE_NAMES.READERS_LIST_NEWS}
+                  to={`/author/${cookie?.token}/news/list`}
                   className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
                 >
                   minhas News
@@ -80,12 +84,12 @@ function Navbar() {
 
         <div className="w-3/12 flex justify-end">
           {isLoggedIn ? (
-            <a
-              href="/"
+            <Link
+              to="/logout"
               className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
             >
-              sair
-            </a>
+              Sair
+            </Link>
           ) : (
             <>
               <Link

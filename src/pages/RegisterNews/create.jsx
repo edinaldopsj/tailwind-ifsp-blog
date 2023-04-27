@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
 import { Form, Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import Wrapper from '../../components/layout/Wrapper';
 import Title from '../../components/Title';
 import Text from '../../components/Typography/Text';
@@ -11,9 +12,9 @@ import ErrorLabel from '../../components/ErrorLabel';
 
 import { defaultValues, resolver } from './validation';
 import { LANG } from '../../lang/pt-br';
-import { ROUTE_NAMES } from '../../router/names';
 
 function CreateNew({ onSubmit, news }) {
+  const [cookie] = useCookies(['token']);
   const {
     register,
     handleSubmit,
@@ -128,7 +129,7 @@ function CreateNew({ onSubmit, news }) {
         <div className="flex justify-center">
           <Link
             className="text-blue-400 no-underline"
-            to={ROUTE_NAMES.AUTHOR_LIST_NEWS}
+            to={`/author/${cookie?.token}/news/list`}
           >
             {LANG.NEWS.BACK}
           </Link>

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { API } from '../../../config/api';
 
-export async function login({ email, password }) {
+export async function login({ nickname, password }) {
   try {
     const isLoggedIn = await axios.post(`${API}/login`, {
-      email,
+      nickname,
       password,
     });
 
@@ -24,9 +24,9 @@ export async function login({ email, password }) {
  *  console.log(userNews);
  * });
  * */
-export async function getUserNews() {
+export async function getUserNews(authorId) {
   try {
-    const { data } = await axios.get(`${API}/author/2`);
+    const { data } = await axios.get(`${API}/author/${authorId}`);
 
     return data;
   } catch (error) {
