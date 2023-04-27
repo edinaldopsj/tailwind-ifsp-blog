@@ -187,7 +187,7 @@ function NewsBody(props) {
                 </header>
                 <p className="font-thin text-black">{commentItem?.comment}</p>
                 <footer className="flex flex-row-reverse gap-2">
-                  {cookie?.token === commentItem?.userID && (
+                  {cookie?.token?.id === commentItem?.userID && (
                     <Button
                       defaultButton
                       small

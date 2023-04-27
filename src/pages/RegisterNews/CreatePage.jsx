@@ -26,7 +26,7 @@ function CreateNewsPage() {
           subtitle: data?.subtitle,
           content: data?.text,
         },
-        userId: cookie?.token,
+        userId: cookie?.token?.id,
       });
 
       if (newNews) {
@@ -42,7 +42,7 @@ function CreateNewsPage() {
           subtitle: data?.subtitle,
           content: data?.text,
         },
-        userId: cookie?.token,
+        userId: cookie?.token?.id,
         newsId: data?.id,
       });
 
@@ -54,7 +54,7 @@ function CreateNewsPage() {
       }
     }
 
-    navigate(`/author/${cookie?.token}/news/list`);
+    navigate(`/author/${cookie?.token?.id}/news/list`);
   };
 
   return (newsId && news) ? (

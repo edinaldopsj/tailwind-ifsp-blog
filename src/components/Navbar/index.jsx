@@ -18,7 +18,7 @@ function Navbar() {
 
   return (
     <main>
-      <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-02">
+      <header className="header sticky top-0 bg-white shadow-md flex items-center justify-between px-8 py-2">
         <h1 className="w-3/12">
           <Link
             to={ROUTE_NAMES.ROOT}
@@ -28,8 +28,8 @@ function Navbar() {
           </Link>
         </h1>
 
-        <nav className="nav font-semibold text-lg">
-          <ul className="flex items-center">
+        <nav className="nav font-semibold text-md md:text-lg">
+          <ul className="flex flex-col md:flex-row items-center">
             <li>
               <Link
                 to={ROUTE_NAMES.ROOT}
@@ -50,7 +50,7 @@ function Navbar() {
             {isLoggedIn ? (
               <li>
                 <Link
-                  to={`/author/${cookie?.token}/news/list`}
+                  to={`/author/${cookie?.token?.id}/news/list`}
                   className="p-4 border-b-2 border-blue-500 border-opacity-0 hover:border-opacity-100 hover:text-blue-500 duration-200 cursor-pointer"
                 >
                   minhas News

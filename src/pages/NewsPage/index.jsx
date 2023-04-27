@@ -20,7 +20,7 @@ function NewsPage() {
     // TODO: remove arbitrary userId
     const comment = await createComment({
       comment: commentary,
-      userId: cookie.token,
+      userId: cookie?.token?.id,
       newId: id,
     });
 
@@ -39,7 +39,7 @@ function NewsPage() {
     const comment = await updateComment({
       commentaryId,
       comment: commentary,
-      userId: cookie.token,
+      userId: cookie?.token?.id,
       newId: newsId,
     });
 

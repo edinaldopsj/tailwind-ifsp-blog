@@ -129,7 +129,7 @@ function CreateNew({ onSubmit, news }) {
         <div className="flex justify-center">
           <Link
             className="text-blue-400 no-underline"
-            to={`/author/${cookie?.token}/news/list`}
+            to={`/author/${cookie?.token?.id}/news/list`}
           >
             {LANG.NEWS.BACK}
           </Link>
