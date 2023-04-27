@@ -4,6 +4,10 @@ export const LANG = {
     BACK: 'Voltar para o início',
   },
 
+  LOGIN: {
+    TITLE: 'Bem vindo ao IFSP - Notícias',
+  },
+
   /* RF02 */
   NEWS: {
     COMMENTS: {

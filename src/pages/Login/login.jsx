@@ -21,12 +21,12 @@ function Login({ onSubmit }) {
 
   const handleClearForm = () => {
     reset();
-    setFocus('name');
+    setFocus('email');
   };
 
   return (
     <Wrapper>
-      <Title title={LANG.REGISTER_READER.TITLE} />
+      <Title title={LANG.LOGIN.TITLE} />
       <main>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -69,7 +69,7 @@ function Login({ onSubmit }) {
             <Button onClick={handleClearForm} defaultButton>
               {LANG.REGISTER_READER.FORM.CANCEL_BUTTON}
             </Button>
-            <Button type="submit" onClick={onSubmit} defaultButton>
+            <Button type="submit" defaultButton>
               {LANG.REGISTER_READER.FORM.CONFIRM_BUTTON}
             </Button>
           </section>

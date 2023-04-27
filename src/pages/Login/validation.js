@@ -7,7 +7,7 @@ const validationSchema = yup.object({
 });
 
 const defaultValues = {
-  name: '',
+  email: '',
   password: '',
 };
 

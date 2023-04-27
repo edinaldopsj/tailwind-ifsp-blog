@@ -1,8 +1,18 @@
-/* eslint-disable no-unused-vars */
-// TODO: remove lint rule
 import axios from 'axios';
-import { NEWS_LIST_MOCK } from '../../../assets/mocks/news.mock';
 import { API } from '../../../config/api';
+
+export async function login({ email, password }) {
+  try {
+    const isLoggedIn = await axios.post(`${API}/login`, {
+      email,
+      password,
+    });
+
+    return isLoggedIn;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
 
 /**
  * Get news list for the admin or the author
