@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, defer } from 'react-router-dom';
 
 import App from '../App';
 import ErrorPage from '../pages/ErrorPage';
@@ -14,7 +14,9 @@ import RegisterNews from '../pages/RegisterNews';
 import UsersList from '../pages/User/List';
 import AuthorList from '../pages/AuthorList';
 import NavBar from '../components/Navbar';
-import { getNews, getNewsByAuthor, getNewsByAuthors } from '../providers/news/site';
+import {
+  getNews, getNewsByAuthor, getNewsByAuthors, getNewsItem,
+} from '../providers/news/site';
 
 const routerErrorElement = <ErrorPage />;
 
@@ -25,7 +27,9 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <App />,
-        loader: getNews,
+        loader: async () => defer({
+          news: getNews(),
+        }),
       },
       {
         path: '/admin/new',
@@ -46,6 +50,8 @@ const router = createBrowserRouter([
       {
         path: '/news/:newsId',
         element: <NewsPage />,
+        loader: async ({ params }) => (params?.newsId ? defer(getNewsItem(params?.newsId)) : {}),
+
       },
       {
         path: '/news/list',
@@ -54,9 +60,11 @@ const router = createBrowserRouter([
       {
         path: '/news/by/:authorName?',
         element: <AuthorList />,
-        loader: async ({ params }) => ({
-          authors: await getNewsByAuthors(),
-          news: params?.authorName ? await getNewsByAuthor(params?.authorName) : [],
+        loader: async ({ params }) => defer({
+          authors: !params?.authorName ? getNewsByAuthors() : [],
+          news: params?.authorName
+            ? getNewsByAuthor(params?.authorName)
+            : [],
         }),
       },
       {

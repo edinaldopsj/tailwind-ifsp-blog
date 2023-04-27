@@ -23,10 +23,8 @@ export async function getNews() {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw new Error(error);
   }
-
-  return [];
 }
 
 /**
@@ -38,7 +36,7 @@ export async function getNews() {
  * @param {string} news.content The news content
  * @returns {Promise}
  * @example
- * getNews().then((news) => {
+ * getNewsByAuthors().then((news) => {
  *  console.log(news);
  * });
  * */
@@ -48,10 +46,8 @@ export async function getNewsByAuthors() {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw new Error(error);
   }
-
-  return [];
 }
 
 /**
@@ -69,10 +65,8 @@ export async function getNewsByAuthor(authorNickname) {
 
     return data;
   } catch (error) {
-    console.error(error);
+    throw new Error(error);
   }
-
-  return [];
 }
 
 /**
@@ -88,11 +82,17 @@ export async function getNewsByAuthor(authorNickname) {
  * @returns {string} news.dislikes The news content
  * @example
  * getNewsItem().then(({newsId}) => {
- * console.log(news);
+ *  console.log(news);
  * });
  */
-export function getNewsItem({ newsId }) {
-  // TODO: promise that returns data from database service - GET
+export async function getNewsItem(newsId) {
+  try {
+    const { data } = await axios.get(`${API}/news/${newsId}`);
+
+    return data;
+  } catch (error) {
+    throw new Error(error);
+  }
 }
 
 /**
@@ -100,7 +100,7 @@ export function getNewsItem({ newsId }) {
  * @param {Headers} userId - the user id from the token object
  * @param {object} comment The comment object
  * @param {string} comment.content The comment content
- * @return {Promise} comment
+ * @return {Promise} comment The comment object
  * @return {string} comment.content The comment content
  * @return {string} comment.updatedAt The comment date
  * @example

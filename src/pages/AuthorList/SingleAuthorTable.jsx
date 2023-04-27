@@ -24,7 +24,7 @@ function SingleAuthorTable({ news }) {
               <Text>{newsItem?.title}</Text>
             </td>
             <td className="text-rigth pr-2 w-32">
-              <Link to={`news/${newsItem?.id}`}>
+              <Link to={`/news/${newsItem?.id}`}>
                 <Text>Visualizar</Text>
               </Link>
             </td>

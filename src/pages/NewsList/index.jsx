@@ -21,11 +21,11 @@ import NewsCard from '../../components/NewsCard';
  * @returns
  * */
 function NewsList(props) {
-  const { news } = props;
+  const { news = [] } = props;
 
   return (
     <section className="min-h-screen border-x-2 pt-8">
-      {news.map((newsItem) => (
+      {news?.length > 0 && news?.map((newsItem) => (
         <NewsCard
           key={newsItem?.id}
           id={newsItem?.id}

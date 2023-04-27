@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { LANG } from '../../lang/pt-br';
 
-export default function ErrorPage() {
+function ErrorPage({ message }) {
   return (
     <main className="flex flex-col text-center justify-center h-screen gap-4">
       <header>
@@ -11,7 +12,7 @@ export default function ErrorPage() {
       <section>
         <p className="text-2xl">Um erro inesperado aconteceu!</p>
         <p className="text-xl pt-3">
-          <i>404 - Não encontrado</i>
+          <i>{message ?? '404 - Não encontrado'}</i>
         </p>
 
         <p className="mt-5">
@@ -21,3 +22,13 @@ export default function ErrorPage() {
     </main>
   );
 }
+
+ErrorPage.propTypes = {
+  message: PropTypes.string,
+};
+
+ErrorPage.defaultProps = {
+  message: '',
+};
+
+export default ErrorPage;

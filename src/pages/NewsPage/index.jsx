@@ -1,15 +1,21 @@
 import React, { Suspense } from 'react';
+import { useLoaderData, Await } from 'react-router-dom';
+
 import NewsBody from '../../components/NewsBody';
 import Loading from '../../components/Loading';
-import { NEWS_DATA_MOCK } from '../../assets/mocks/news.mock';
 
 function NewsPage() {
-  // TODO: create the logic to fetch the news data from the API
-  // const getNews = () => {};
+  const newsData = useLoaderData();
 
   return (
     <Suspense fallback={<Loading />}>
-      <NewsBody data={NEWS_DATA_MOCK} onComment onDeleteComment onEditComment />
+      <Await
+        resolve={newsData}
+        errorElement={<div>Could not load news 😬</div>}
+        children={(news) => (
+          <NewsBody data={news} onComment onDeleteComment onEditComment />
+        )}
+      />
     </Suspense>
   );
 }

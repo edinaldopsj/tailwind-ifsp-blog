@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { HandThumbUpIcon, HandThumbDownIcon } from '@heroicons/react/24/solid';
 
@@ -6,6 +7,7 @@ import Title from '../Title';
 import Button from '../Button/Button';
 
 import { LOCALE, LANG } from '../../lang/pt-br';
+import Loading from '../Loading';
 
 /**
  * Render the news body of the page, getting the data from the props
@@ -31,7 +33,7 @@ function NewsBody(props) {
   const [commentary, setCommentary] = useState('');
   const { data } = props;
 
-  if (!data?.id) return (<div>Notícia Inválida</div>);
+  if (!data?.id) return (<Loading />);
 
   const formattedDate = new Date(data?.updatedAt).toLocaleDateString(LOCALE);
 
@@ -60,7 +62,7 @@ function NewsBody(props) {
       <Title title={data?.title} />
       <h5 className="text-lg text-center uppercase leading-tight">{data?.subtitle}</h5>
       <h5 className="text-gray-500 text-sm text-center text-opacity-70 italic uppercase">
-        {`por ${data.author}, em ${formattedDate}`}
+        {`por ${data?.author}, em ${formattedDate}`}
       </h5>
 
       {/* Like section */}
@@ -69,17 +71,17 @@ function NewsBody(props) {
           className="h-6 w-6 text-gray-500 hover:text-green-500 cursor-pointer"
           onClick={handleLikeNews}
         />
-        <span>{data.likes}</span>
+        <span>{data?.likes}</span>
         <HandThumbDownIcon
           className="h-6 w-6 text-gray-500 hover:text-red-500 cursor-pointer"
           onClick={handleDislikeNews}
         />
-        <span>{data.dislikes}</span>
+        <span>{data?.dislikes}</span>
       </section>
 
       {/* news by itself */}
       <section className="flex justify-center text-lg my-5">
-        {data.content}
+        {data?.content}
       </section>
 
       {/* Comments section */}
@@ -140,23 +142,21 @@ function NewsBody(props) {
 }
 
 NewsBody.propTypes = {
-  data: {
-    id: 'number',
-    title: 'string',
-    subtitle: 'string',
-    author: 'string',
-    updatedAt: 'string',
-    content: 'string',
-    likes: 'number',
-    dislikes: 'number',
-    comments: [
-      {
-        id: 'number',
-        content: 'string',
-        by: 'string',
-      },
-    ],
-  },
+  data: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    author: PropTypes.string,
+    updatedAt: PropTypes.string,
+    content: PropTypes.string,
+    likes: PropTypes.number,
+    dislikes: PropTypes.number,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      content: PropTypes.string,
+      by: PropTypes.string,
+    })),
+  }),
 };
 
 NewsBody.defaultProps = {

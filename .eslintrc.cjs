@@ -33,5 +33,6 @@ module.exports = {
     'no-console': ['error', { allow: ['error'] }],
     'react/button-has-type': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/no-children-prop': 'off',
   },
 };

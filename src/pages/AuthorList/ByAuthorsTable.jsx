@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Table from '../../components/Table';
 import Text from '../../components/Typography/Text';
 
@@ -9,7 +10,10 @@ function ByAuthorsTable({ authors }) {
       <thead className="bg-gray-300">
         <tr className="h-12 border border-gray-100 rounded">
           <th className="text-left pl-5">
-            Notícia
+            Autor
+          </th>
+          <th className="text-left pl-5">
+            Apelido
           </th>
           <th className="text-rigth pr-2 w-32">
             Quantidade
@@ -21,6 +25,11 @@ function ByAuthorsTable({ authors }) {
           <tr key={author?.id} className="h-12 border border-gray-100 rounded">
             <td className="pl-5">
               <Text>{author?.name}</Text>
+            </td>
+            <td className="pl-5">
+              <Link to={`/news/by/${author?.nickname}`}>
+                <Text>{author?.nickname}</Text>
+              </Link>
             </td>
             <td className="text-rigth pr-2 w-32">
               <Text>{author?.quant ?? 0}</Text>

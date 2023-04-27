@@ -1,12 +1,16 @@
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
-import { useParams, useLoaderData } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { useParams, useLoaderData, Await } from 'react-router-dom';
 import Wrapper from '../../components/layout/Wrapper';
 import Text from '../../components/Typography/Text';
 
-import { LANG } from '../../lang/pt-br';
 import ByAuthorsTable from './ByAuthorsTable';
 import SingleAuthorTable from './SingleAuthorTable';
+import Loading from '../../components/Loading';
+
+import { LANG } from '../../lang/pt-br';
+import { ERROR_MESSAGES } from '../../lang/pt-br/errors';
+import ErrorPage from '../ErrorPage';
 
 function AuthorList() {
   const { authors, news } = useLoaderData();
@@ -14,18 +18,34 @@ function AuthorList() {
 
   return (
     <Wrapper>
-      <div className="flex justify-between mt-8 pt-4 px-4 md:px-16 md:text-center">
-        <Text size="text-2xl">
-          {LANG.BY_AUTHOR.TITLE}
-          :
-        </Text>
-        <Text size="text-2xl" className="font-semibold">
-          {authorName ?? 'Todos'}
-        </Text>
+      <div className="flex justify-center mt-8 pt-4 px-4 md:px-16 md:text-center">
+        <div className="flex gap-2 items-baseline">
+          <Text size="text-2xl">{LANG.BY_AUTHOR.TITLE}</Text>
+          <Text size="text-xl">
+            (clique no apelido do autor para ver as notícias dele.)
+          </Text>
+        </div>
       </div>
 
-      {!authorName && <ByAuthorsTable authors={authors} />}
-      {authorName && <SingleAuthorTable news={news} />}
+      {!authorName && (
+        <Suspense fallback={<Loading />}>
+          <Await
+            resolve={authors}
+            errorElement={<ErrorPage message={ERROR_MESSAGES.NO_AUTHOR} />}
+            children={(authorData) => <ByAuthorsTable authors={authorData} />}
+          />
+        </Suspense>
+      )}
+
+      {authorName && (
+        <Suspense fallback={<Loading />}>
+          <Await
+            resolve={news}
+            errorElement={<ErrorPage message={ERROR_MESSAGES.NO_AUTHOR_NEWS} />}
+            children={(newsData) => <SingleAuthorTable news={newsData} />}
+          />
+        </Suspense>
+      )}
     </Wrapper>
   );
 }

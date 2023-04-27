@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useLoaderData, Await } from 'react-router-dom';
 
 import Wrapper from './components/layout/Wrapper';
 import NewsList from './pages/NewsList';
+import Loading from './components/Loading';
+import ErrorPage from './pages/ErrorPage';
+import { ERROR_MESSAGES } from './lang/pt-br/errors';
 
 function App() {
-  const newsData = useLoaderData();
+  const { news } = useLoaderData();
 
   return (
     <Wrapper>
-      <Await
-        resolve={newsData}
-        errorElement={
-          <div>Could not load news 😬</div>
-          }
-        // eslint-disable-next-line react/no-children-prop
-        children={(news) => (
-          <NewsList news={news} />
-        )}
-      />
+      <Suspense fallback={<Loading fullscreen />}>
+        <Await
+          resolve={news}
+          errorElement={<ErrorPage message={ERROR_MESSAGES.NO_NEWS} />}
+        >
+          {(newsData) => (
+            <NewsList news={newsData} />)}
+        </Await>
+      </Suspense>
     </Wrapper>
   );
 }
